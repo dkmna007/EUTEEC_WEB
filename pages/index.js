@@ -35,19 +35,23 @@ const Index = props => {
         <meta
           property="og:url"
           content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html"
+          key="url"
         />
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="article" key="url" />
         <meta
           property="og:title"
           content="When Great Minds Don’t Think Alike"
+          key="title"
         />
         <meta
           property="og:description"
           content="How much does culture influence creative thinking?"
+          key="description"
         />
         <meta
           property="og:image"
           content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg"
+          key="image"
         />
       </Head>
 
