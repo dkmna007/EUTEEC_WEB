@@ -79,7 +79,7 @@ const About = () => {
           key="image"
         />
       </Head>
-      <DefaultLayout menuProps={menuProps}>
+      <DefaultLayout /* menuProps={menuProps} */>
         <Header
           title={staticAbout.Title}
           subTitle={staticAbout.headerSubTitle}
