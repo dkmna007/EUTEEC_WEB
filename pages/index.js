@@ -10,6 +10,7 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
 import { increment, decrement } from "../src/actions";
+import Link from "next/link";
 
 const useStyles = makeStyles({
   container: {
@@ -81,6 +82,8 @@ const Index = props => {
           >
             <RemoveIcon />
           </Fab>
+
+          <Link href="/about">go about</Link>
         </CardActions>
       </Card>
     </>
