@@ -16,7 +16,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import Hidden from "@material-ui/core/Hidden";
 import Lists from "@/components/Navigation/Lists";
-import AppBarStyle from "@/../public/assets/jss/AppBarStyle";
+import AppBarStyle from "./jss/AppBarStyle";
 
 const useStyles = makeStyles(theme => AppBarStyle);
 
