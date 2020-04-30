@@ -52,7 +52,9 @@ export default function Blog({ blog }) {
           <link rel="icon" href="/favicon.ico" />
           <meta
             property="og:url"
-            content={`https://euteec-next-js-1yecf60wd.now.sh/blog/${bid}`}
+            content={
+              "http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html"
+            }
             key="url"
           />
           <meta property="og:type" content="article" key="article" />
