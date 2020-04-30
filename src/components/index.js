@@ -5,22 +5,22 @@ export { Header } from "./Header";
 // export { default as ProgressButton } from "./Progress/ProgressButton";
 // export { default as AlertMessage } from "./AlertMessage";
 
-// /* swipperble views */
+/* swipperble views */
 
-// export { default as CarouselAuto } from "./Carousel";
+export { default as CarouselAuto } from "./Carousel";
 
-// /* cards */
-// export { LinkCard } from "./Cards/LinkCard";
-// export { ProjectCard } from "./Cards/ProjectCard";
+/* cards */
+export { LinkCard } from "./Cards/LinkCard";
+export { ProjectCard } from "./Cards/ProjectCard";
 
-// /* Overlay */
+/* Overlay */
 // export { Overlay } from "./Overlay";
 
-// /* feedback */
+/* feedback */
 
 // export { FeedBack } from "./FeedBack";
 
-// /* comments  */
+/* comments  */
 // export { Comments } from "./Comments/Comments";
 
 // export { AdvertCard } from "./AdvertCard";

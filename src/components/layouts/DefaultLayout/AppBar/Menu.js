@@ -95,14 +95,14 @@ export default function LogoutMenu({
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    {user ? (
+                    {/* {user ? (
                       <>
                         <MenuItem onClick={handleViewProfile}>Profile</MenuItem>
                         <MenuItem onClick={handleLogOut}>Logout</MenuItem>
                       </>
                     ) : (
                       <MenuItem onClick={handleLogIn}>Login</MenuItem>
-                    )}
+                    )} */}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

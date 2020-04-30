@@ -32,8 +32,8 @@ export const FeedBack = props => {
           <img
             src={
               userInput.success
-                ? "/assets/images/success.svg"
-                : "/assets/images/error.svg"
+                ? "/static/assets/images/success.svg"
+                : "/static/assets/images/error.svg"
             }
             alt="Kiwi standing on oval"
             width={"100%"}

@@ -14,8 +14,8 @@ export const useAvatorStyles = makeStyles(theme => ({
 }));
 export default function UserAvatar({ size }) {
   const classes = useAvatorStyles();
-  const { user } = useSelector(state => state.user);
-
+  // const { user } = useSelector(state => state.user);
+  const user = "";
   return (
     <React.Fragment>
       <Avatar

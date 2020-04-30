@@ -84,7 +84,7 @@ const About = () => {
           title={staticAbout.Title}
           subTitle={staticAbout.headerSubTitle}
           Current={staticAbout.Current}
-          image={"/assets/images/tech1.jpg"}
+          image={"/static/assets/images/tech1.jpg"}
         />
         <Container /* background={"#17141d"} */>
           <br />

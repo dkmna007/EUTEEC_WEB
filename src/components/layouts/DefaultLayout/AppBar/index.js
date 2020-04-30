@@ -84,7 +84,7 @@ export default function AppBarHeader(props) {
         <Hidden mdDown>
           <IconButton color="inherit" aria-label="open drawer" edge="start">
             <Avatar
-              src="/assets/images/techlogo.png"
+              src="/static/assets/images/techlogo.png"
               className={classes.logo}
             />
           </IconButton>

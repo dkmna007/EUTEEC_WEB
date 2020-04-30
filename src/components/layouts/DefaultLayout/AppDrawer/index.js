@@ -26,8 +26,8 @@ export default function AppDrawer({
   }));
   const theme = useTheme();
   const classes = useDrawerStyles();
-  const { user } = useSelector(state => state.user);
-
+  // const { user } = useSelector(state => state.user);
+  const user = "";
   return (
     <nav className={classes.drawer} aria-label="mailbox folders">
       <Drawer

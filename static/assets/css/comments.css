@@ -1,0 +1,141 @@
+.jss242 {
+  width: auto;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.MuiGrid-justify-xs-center {
+  justify-content: center;
+}
+.jss346 {
+  width: 100%;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.jss1001 {
+  letter-spacing: normal !important;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.5625rem;
+  line-height: 1.4em;
+  color: #3c4858;
+  margin-top: 30px;
+  min-height: 32px;
+  text-align: center;
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+.jss1004 {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  text-align: left;
+  letter-spacing: normal !important;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  margin: 0 0 10px;
+  color: #555 !important;
+  font-size: 1rem;
+  line-height: 1.6em;
+}
+.jss1005 {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+  color: #3c4858;
+  font-size: 1rem;
+  text-align: left;
+  letter-spacing: normal !important;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  align-items: flex-start;
+  -webkit-box-align: start;
+}
+
+.jss1006 {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+  font-size: 1rem;
+  text-align: left;
+  letter-spacing: normal !important;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  color: #9c27b0;
+  background-color: transparent;
+  text-decoration: none;
+  float: left !important;
+  padding: 10px;
+}
+.jss1007 {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+  font-size: 1rem;
+  text-align: left;
+  color: #9c27b0;
+  letter-spacing: normal !important;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.2);
+  margin-right: 15px;
+  border-radius: 50%;
+}
+.jss1008 {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+  color: #3c4858;
+  font-size: 1rem;
+  text-align: left;
+  letter-spacing: normal !important;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  flex: 1;
+  padding-right: 10px;
+  -webkit-box-flex: 1;
+}
+
+.jss1009 {
+  text-align: left;
+  letter-spacing: normal !important;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.125rem;
+  line-height: 1.5em;
+  color: #3c4858;
+  margin-top: 10px;
+  min-height: 32px;
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+.jss1010 {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+  color: #3c4858;
+  font-size: 1rem;
+  text-align: left;
+  letter-spacing: normal !important;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}

@@ -2,10 +2,10 @@ import React from "react";
 import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 400,
-  },
+    maxWidth: 400
+  }
 }));
 
 export default function Error(props) {
@@ -24,7 +24,7 @@ export default function Error(props) {
       >
         <Grid item xs={6} md={3} sm={3}>
           <img
-            src={"/assets/images/serverdown.svg"}
+            src={"/static/assets/images/serverdown.svg"}
             alt="Kiwi standing on oval"
             width={"100%"}
           />

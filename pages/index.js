@@ -1,31 +1,36 @@
 import React from "react";
 import Head from "next/head";
 import { makeStyles } from "@material-ui/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
-import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
 import { increment, decrement } from "../src/actions";
-import Link from "next/link";
+import { Grid, Typography, Divider } from "@material-ui/core";
 
-const useStyles = makeStyles({
-  container: {
-    display: "flex",
-    flexWrap: "wrap"
-  },
-  title: {
-    fontSize: 14
+/* page components */
+import { LinkCard, ProjectCard, Container, CarouselAuto } from "@/components";
+
+import { ListCard as Specialisation } from "@/components/Cards/ListCard";
+import { ListCard as Activities } from "@/components/Cards/ListCard";
+
+/* constants */
+import { Constants } from "@/constants/Home";
+import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
+
+const useStyles = makeStyles(theme => ({
+  headings: {
+    margin: theme.spacing(3, 0)
   }
-});
+}));
 
 const Index = props => {
   const { counter, increment, decrement } = props;
-
   const classes = useStyles();
+  const {
+    homepage,
+    specialisation_data,
+    activities_data,
+    app_links,
+    projects
+  } = Constants();
 
   return (
     <>
@@ -55,41 +60,91 @@ const Index = props => {
         />
       </Head>
 
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            Dispatched from <b>{counter.from}</b>
-          </Typography>
-          <Typography variant="h3" component="h2">
-            {counter.value}
-          </Typography>
-          <Typography color="textSecondary">{counter.action}</Typography>
-        </CardContent>
-        <CardActions>
-          <Fab
-            variant="round"
-            color="primary"
-            size="small"
-            onClick={() => increment()}
-          >
-            <AddIcon />
-          </Fab>
-          <Fab
-            variant="round"
-            color="secondary"
-            size="small"
-            onClick={() => decrement()}
-          >
-            <RemoveIcon />
-          </Fab>
+      <DefaultLayout /* menuProps={menuProps} */>
+        <div className="container">
+          {/* App Carausel */}
+          <CarouselAuto />
 
-          <Link href="/about">go about</Link>
-        </CardActions>
-      </Card>
+          {/* content */}
+          <Container elevation={0} background={"#17141d"}>
+            <Typography
+              color="primary"
+              variant="h4"
+              align="center"
+              className={classes.headings}
+            >
+              {homepage.title}
+              <strong>({homepage.title_2})</strong>
+              <br />
+            </Typography>
+            <Typography
+              color="secondary"
+              variant="h4"
+              align="center"
+              className={classes.headings}
+            >
+              {homepage.title_3}
+            </Typography>
+          </Container>
+
+          {/* Projects section */}
+          <Container
+            elevation={0}
+            top={2}
+            sides={"0px"}
+            background={"rgba(255, 255, 255, 0)"}
+          >
+            <Grid container spacing={1}>
+              {projects.map(project => {
+                return (
+                  <Grid item md={4} sm={6} xs={12}>
+                    <ProjectCard project={project} />
+                  </Grid>
+                );
+              })}
+            </Grid>
+            {/* Area of Specialisation */}
+            <br />
+            <Divider />
+            <br />
+
+            <Grid container justify="space-between">
+              <Specialisation
+                Subtitle={homepage.subtitle_1}
+                Paragraph={homepage.paragraph_1}
+                Img={"/static/assets/images/faay.jpg"}
+                data={specialisation_data}
+              />
+            </Grid>
+
+            <br />
+            <Divider />
+            <br />
+            {/*Our Main Activities */}
+
+            <Grid container container justify="space-between">
+              <Activities
+                Subtitle={homepage.subtitle_2}
+                Paragraph={homepage.paragraph_2}
+                data={activities_data}
+                Img={"/static/assets/images/euteec.jpg"}
+              />
+            </Grid>
+
+            <br />
+            {/* App Links */}
+            <Grid container justify="space-evenly">
+              {app_links.map(link => {
+                return (
+                  <Grid item>
+                    <LinkCard link={link} />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Container>
+        </div>
+      </DefaultLayout>
     </>
   );
 };
