@@ -111,19 +111,7 @@ export default function Blog({ blog }) {
   );
 }
 
-export const getStaticProps = async ({ params }) => {
-  const blog = await getBlogAndMoreBlogs(params.bid);
-
-  return {
-    props: { blog }
-  };
-};
-
-export const getStaticPaths = async () => {
-  const allBlogs = await getAllBlogsWithSlug();
-
-  return {
-    paths: allBlogs?.map(node => `/blog/${node._id}`) || [],
-    fallback: true
-  };
+Blog.getInitialProps = async ({ query }) => {
+  const blog = await getBlogAndMoreBlogs(query.bid);
+  return { blog: blog };
 };
