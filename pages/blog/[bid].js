@@ -85,7 +85,7 @@ export default function Blog({ blog }) {
                 >
                   <SMediaPlayer mediaUrl={blog.mediaUrl} />
                   {/* comments/likes/views */}
-                  <BlogActionBar blog={blog} />
+                  {/* <BlogActionBar blog={blog} /> */}
                 </Paper>
                 <br /> <br />
                 {/* blog content */}
