@@ -16,7 +16,7 @@ import BlogActionBar from "@/components/BlogActionBar";
 import { AuthorCard } from "@/components/Cards/AuthorCard";
 // import ClapButton from "../Components/Clap/ClapButton";
 
-// import useBlogComments from "@/state/useBlogComments";
+import useBlogComments from "@/state/useBlogComments";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 // import { LoginContext } from "@/context/LoginContext/LoginContext";
 
@@ -43,9 +43,9 @@ const useStyles = makeStyles(theme => ({
 export default function Blog({ blog }) {
   const classes = useStyles();
 
-  // let bid = blog._id;
-  // const commentState = useBlogComments({ bid });
-  // const menuProps = useContext(LoginContext);
+  let bid = blog._id;
+  const commentState = useBlogComments({ bid });
+  const menuProps = useContext(LoginContext);
   let { author } = blog;
   return (
     <DefaultLayout /* menuProps={menuProps} */>
@@ -83,7 +83,7 @@ export default function Blog({ blog }) {
                 <MarkDown blog={blog} />
                 {/* author  */}
                 <AuthorCard author={author} />
-                {/* <Comments {...commentState} />  */}
+                <Comments {...commentState} />
               </Grid>
 
               {/* <ClapButton onCountChange={onCountChange} /> */}
@@ -104,5 +104,6 @@ export default function Blog({ blog }) {
 
 Blog.getInitialProps = async ({ query }) => {
   const blog = await getBlogAndMoreBlogs(query.bid);
+
   return { blog: blog };
 };
