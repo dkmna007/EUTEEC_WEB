@@ -13,12 +13,12 @@ import {
   MarkDown
 } from "@/components";
 import BlogActionBar from "@/components/BlogActionBar";
-import { AuthorCard } from "@/components/Cards/AuthorCard";
+// import { AuthorCard } from "@/components/Cards/AuthorCard";
 // import ClapButton from "../Components/Clap/ClapButton";
 import fetch from "isomorphic-unfetch";
-import useBlogComments from "@/state/useBlogComments";
+// import useBlogComments from "@/state/useBlogComments";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
+// import { LoginContext } from "@/context/LoginContext/LoginContext";
 import Head from "next/head";
 
 const useStyles = makeStyles(theme => ({
@@ -41,11 +41,11 @@ const useStyles = makeStyles(theme => ({
 export default function Blog({ blog }) {
   const classes = useStyles();
   let bid = blog._id;
-  const commentState = useBlogComments({ bid });
-  const menuProps = useContext(LoginContext);
+  // const commentState = useBlogComments({ bid });
+  // const menuProps = useContext(LoginContext);
 
   return (
-    <DefaultLayout menuProps={menuProps}>
+    <DefaultLayout /* menuProps={menuProps} */>
       <div className={classes.root}>
         <Head>
           <title>Blog</title>
@@ -64,7 +64,7 @@ export default function Blog({ blog }) {
           />
           <meta
             property="og:image"
-            content="http://res.cloudinary.com/dxcci3wkx/image/upload/v1585837838/iapc5e6rsubnherxv17q.jpg"
+            content="http://res.cloudinary.com/dxcci3wkx/image/upload/v1586777179/ohicrk54q12aw0icuuaq.jpg"
             key="image"
           />
         </Head>
