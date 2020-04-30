@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Blog({ blog }) {
   const classes = useStyles();
-  console.log(blog);
+
   // let bid = blog._id;
   // const commentState = useBlogComments({ bid });
   // const menuProps = useContext(LoginContext);
@@ -58,15 +58,15 @@ export default function Blog({ blog }) {
             key="url"
           />
           <meta property="og:type" content="article" key="type" />
-          <meta property="og:title" content="Think Loud" key="title" />
+          <meta property="og:title" content={blog && blog.title} key="title" />
           <meta
             property="og:description"
-            content="creative thinking?"
+            content={blog && blog.content}
             key="description"
           />
           <meta
             property="og:image"
-            content="http://res.cloudinary.com/dxcci3wkx/image/upload/v1586777179/ohicrk54q12aw0icuuaq.jpg"
+            content={blog && blog.mediaUrl}
             key="image"
           />
         </Head>
