@@ -15,7 +15,7 @@ import {
 import BlogActionBar from "@/components/BlogActionBar";
 // import { AuthorCard } from "@/components/Cards/AuthorCard";
 // import ClapButton from "../Components/Clap/ClapButton";
-import fetch from "isomorphic-unfetch";
+import fetch from "node-fetch";
 // import useBlogComments from "@/state/useBlogComments";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 // import { LoginContext } from "@/context/LoginContext/LoginContext";
