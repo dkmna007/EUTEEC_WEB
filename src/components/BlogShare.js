@@ -47,21 +47,21 @@ export default function BlogShare(props) {
     <div className={classes.shares}>
       {/* {children}  */}
       <FacebookShareButton
-        url={window.location.href}
+        url={typeof window !== "undefined" && window.location.href}
         quote={blog.title || ""}
         className={classes.shareItem}
       >
         <FacebookIcon size={32} round />
       </FacebookShareButton>
       <TwitterShareButton
-        url={window.location.href}
+        url={typeof window !== "undefined" && window.location.href}
         title={blog.title || ""}
         className={classes.shareItem}
       >
         <TwitterIcon size={32} round />
       </TwitterShareButton>
       <WhatsappShareButton
-        url={window.location.href}
+        url={typeof window !== "undefined" && window.location.href}
         title={blog.title || ""}
         separator=":: "
         className={classes.shareItem}
@@ -69,14 +69,14 @@ export default function BlogShare(props) {
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>
       <TelegramShareButton
-        url={window.location.href}
+        url={typeof window !== "undefined" && window.location.href}
         title={blog.title}
         className={classes.shareItem}
       >
         <TelegramIcon size={32} round />
       </TelegramShareButton>
       <EmailShareButton
-        url={window.location.href}
+        url={typeof window !== "undefined" && window.location.href}
         subject={blog.title || ""}
         body="body"
         className={classes.shareItem}

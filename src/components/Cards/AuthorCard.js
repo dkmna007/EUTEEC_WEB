@@ -33,14 +33,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const AuthorCard = ({ blog }) => {
+export const AuthorCard = ({ author }) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
-      <Avatar className={classes.avator} src={blog.userAvator} />
+      <Avatar className={classes.avator} src={author && author.avator} />
       <p>
-        <Link href={`/profile/${blog.userId}`}>
+        <Link href={`/profile/${author && author.id}`}>
           <Button
             variant="contained"
             color="primary"
@@ -49,9 +49,9 @@ export const AuthorCard = ({ blog }) => {
             Follow
           </Button>
         </Link>
-        <h5 className={classes.name}>{blog.name}</h5>
+        <h5 className={classes.name}>{author && author.name}</h5>
 
-        {truncateString(blog.bio, 100)}
+        {truncateString(author && author.bio, 100)}
         {/* <strong>
         <br style="clear: both;" />
       </strong> */}
