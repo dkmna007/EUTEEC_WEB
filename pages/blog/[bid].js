@@ -15,11 +15,12 @@ import {
 import BlogActionBar from "@/components/BlogActionBar";
 // import { AuthorCard } from "@/components/Cards/AuthorCard";
 // import ClapButton from "../Components/Clap/ClapButton";
-import fetch from "node-fetch";
+
 // import useBlogComments from "@/state/useBlogComments";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 // import { LoginContext } from "@/context/LoginContext/LoginContext";
 import Head from "next/head";
+import { getAllBlogsWithSlug, getBlogAndMoreBlogs } from "@/lib/api";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -40,7 +41,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function Blog({ blog }) {
   const classes = useStyles();
-  let bid = blog._id;
+  console.log(blog);
+  // let bid = blog._id;
   // const commentState = useBlogComments({ bid });
   // const menuProps = useContext(LoginContext);
 
@@ -109,17 +111,19 @@ export default function Blog({ blog }) {
   );
 }
 
-Blog.getInitialProps = async ({ res, query }) => {
-  let api_base = "https://euteec-api.herokuapp.com";
-  let r = await fetch(`${api_base}/api/blogs/${query.bid}`);
-  let blog = await r.json();
+export const getStaticProps = async ({ params }) => {
+  const blog = await getBlogAndMoreBlogs(params.bid);
 
-  if (blog.error && res) {
-    res.statusCode = 404;
-  }
-  if (blog) {
-    return {
-      blog
-    };
-  }
+  return {
+    props: { blog }
+  };
+};
+
+export const getStaticPaths = async () => {
+  const allBlogs = await getAllBlogsWithSlug();
+
+  return {
+    paths: allBlogs?.map(node => `/blog/${node._id}`) || [],
+    fallback: true
+  };
 };
