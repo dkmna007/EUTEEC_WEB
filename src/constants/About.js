@@ -1,5 +1,5 @@
 export const Constants = () => {
-  const appLogo = "/static/assets/images/techlogo.png";
+  const appLogo = "/assets/images/techlogo.png";
 
   const activities = [
     {
@@ -7,21 +7,21 @@ export const Constants = () => {
       title: "Dedan Kimathi University Hakathon 2019",
       content:
         "Project Manager (Peter Kabaria) with team members(Kelvin Maina and Samuel Njoroge) posing for a photo in Dedan Kimathi University Hakathon 2019",
-      image: "/static/assets/images/kevo.JPG"
+      image: "/assets/images/kevo.JPG"
     },
     {
       date: "5 May 2018",
       title: "Environmental Innovation Day",
       content:
         "EUTEEC TEAM after demonstrating the functionalities of Smart Dustbin technology on Environmental Innovation Day",
-      image: "/static/assets/images/table.jpg"
+      image: "/assets/images/table.jpg"
     },
     {
       date: "28 Feb 2019",
       title: "Embedded systems",
       content:
         "Embedded systems and components. Some of the boards and microcontrollers used",
-      image: "/static/assets/images/jose.jpg"
+      image: "/assets/images/jose.jpg"
     }
   ];
 
@@ -65,7 +65,7 @@ export const Constants = () => {
   const membership = {
     Title1: "Club Members discusing ongoing Projects",
     Title2: "  MEMBERSHIP",
-    Img: "/static/assets/images/guys.jpg",
+    Img: "/assets/images/guys.jpg",
     Paragraph1:
       "To join us please pay KSH 200 through our treasurer for Registration and Click the Sign in Button The Admin shall approve your request and add you.We pay a renewal fee of KSH.50 per Semester.Please comply with our Terms. ALL MEMBERS FROM THE FACULTY OF ENGINEERING ECEN DEPARTMENT ARE WELCOMED"
   };

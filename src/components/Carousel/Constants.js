@@ -5,7 +5,7 @@ export const data = [
     subtitle: "Egerton University Technology Enthusiasts Engineer's Club",
     image:
       // eslint-disable-next-line max-len
-      "/static/assets/images/darkcct.jpg"
+      "/assets/images/darkcct.jpg"
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const data = [
     subtitle: "The best Arduino,Raspberry Pi,PLC and MATLAB enthusiasts..",
     image:
       // eslint-disable-next-line max-len
-      "/static/assets/images/technology2.png"
+      "/assets/images/technology2.png"
   },
   {
     id: 3,
@@ -22,6 +22,6 @@ export const data = [
       " We come up with the best projects aligning with the trends in technology in the world.",
     image:
       // eslint-disable-next-line max-len
-      "/static/assets/images/today.jpg"
+      "/assets/images/today.jpg"
   }
 ];

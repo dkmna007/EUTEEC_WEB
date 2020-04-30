@@ -50,7 +50,7 @@ export const Constants = () => {
         "**Microsoft Teams** is the hub for teamwork in Office 365. Jump in and experience how teams can achieve more together when all their chats, meetings, files and apps live in a single workspace. In this interactive demo, you'll first get a guided tour of Teams to understand the app and learn about key features.↵↵Get Microsoft Teams on all your devices. We have desktop apps for Windows, MacOS, and Linux, as well as mobile apps for iOS and Android. [continue reading..](https://teamsdemo.office.com/)",
       authorId: "vzxZ3dmSALPrs5BdGsjB8aGfubS2",
       authorName: "ricks homes",
-      authorAvator: "/static/assets/images/graphics.jpgssssss",
+      authorAvator: "/assets/images/graphics.jpgssssss",
       category: "Technology",
       createdAt: "2020-03-16T23:59:03.469Z",
       updatedAt: "2020-03-17T00:18:21.291Z"

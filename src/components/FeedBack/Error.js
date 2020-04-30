@@ -24,7 +24,7 @@ export default function Error(props) {
       >
         <Grid item xs={6} md={3} sm={3}>
           <img
-            src={"/static/assets/images/serverdown.svg"}
+            src={"/assets/images/serverdown.svg"}
             alt="Kiwi standing on oval"
             width={"100%"}
           />

@@ -1,5 +1,5 @@
 import React from "react";
-
+import Head from "next/head";
 export const AboutTags = () => {
   return (
     <Head>
@@ -13,19 +13,15 @@ export const AboutTags = () => {
       <meta property="og:type" content="article" key="type" />
       <meta
         property="og:title"
-        content="When Great Minds Don’t Think Alike"
+        content=" Egerton University Technology Enthusiast Engineers Club(EUTEEC)"
         key="title"
       />
       <meta
         property="og:description"
-        content="How much does culture influence creative thinking?"
+        content="Egerton University Technology Enthusiast Engineers Club is an association of Electrical and Control Engineering students within the faculty of Engineering. We are responsible for most of the projects that involve automation, programming, sensor integration,modelling and simulation. It is a union of the most competent students ranging from the fresh minds of first years to the experienced finalists in fifth year not forgetting the alumni and graduates."
         key="description"
       />
-      <meta
-        property="og:image"
-        content="http://res.cloudinary.com/dxcci3wkx/image/upload/v1585837838/iapc5e6rsubnherxv17q.jpg"
-        key="image"
-      />
+      <meta property="og:image" content="/assets/images/guys.jpg" key="image" />
     </Head>
   );
 };

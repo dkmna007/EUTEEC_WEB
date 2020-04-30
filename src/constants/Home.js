@@ -13,14 +13,14 @@ export const Constants = () => {
   const specialisation_data = [
     {
       Li: "Design of Control systems",
-      img: "/static/assets/images/graphics.jpg"
+      img: "/assets/images/graphics.jpg"
     },
     {
       Li: "Sensor programing and integration"
     },
     {
       Li: "Graphics and web design/development",
-      img: "/static/assets/images/graphics.jpg"
+      img: "/assets/images/graphics.jpg"
     },
     {
       Li: "Circuit design,analysis,simulation and analysis"
@@ -54,32 +54,32 @@ export const Constants = () => {
 
   const appName = "EGERTON";
   const appLogo = {
-    Logo: "/static/assets/images/techlogo.png"
+    Logo: "/assets/images/techlogo.png"
   };
 
   const app_links = [
     {
-      avatar: "/static/assets/images/techlogo.png",
+      avatar: "/assets/images/techlogo.png",
       href: "www.euteec.cf",
       name: " TECH ENTHUSIASTS"
     },
     {
-      avatar: "/static/assets/images/egerton.jpg",
+      avatar: "/assets/images/egerton.jpg",
       href: "http://www.egerton.ac.ke",
       name: " EGERTON UNIVERSITY"
     },
     {
-      avatar: "/static/assets/images/app.png",
+      avatar: "/assets/images/app.png",
       href: "https://chat.whatsapp.com/9SPhBfMenh5FJHVnDwiu2S",
       name: "ANDROID APP"
     },
     {
-      avatar: "/static/assets/images/whatsapp.png",
+      avatar: "/assets/images/whatsapp.png",
       href: "https://chat.whatsapp.com/9SPhBfMenh5FJHVnDwiu2",
       name: " CHAT NOW?"
     },
     {
-      avatar: "/static/assets/images/link3.jpeg",
+      avatar: "/assets/images/link3.jpeg",
       href: " https://www.lafiki.com",
       name: "Thank You!"
     }

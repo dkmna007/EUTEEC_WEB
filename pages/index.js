@@ -87,7 +87,7 @@ const Index = props => {
               <Specialisation
                 Subtitle={homepage.subtitle_1}
                 Paragraph={homepage.paragraph_1}
-                Img={"/static/assets/images/faay.jpg"}
+                Img={"/assets/images/faay.jpg"}
                 data={specialisation_data}
               />
             </Grid>
@@ -102,7 +102,7 @@ const Index = props => {
                 Subtitle={homepage.subtitle_2}
                 Paragraph={homepage.paragraph_2}
                 data={activities_data}
-                Img={"/static/assets/images/euteec.jpg"}
+                Img={"/assets/images/euteec.jpg"}
               />
             </Grid>
 

@@ -45,7 +45,7 @@ export default function Blog({ blog }) {
 
   let bid = blog._id;
   const commentState = useBlogComments({ bid });
-  const menuProps = useContext(LoginContext);
+  // const menuProps = useContext(LoginContext);
   let { author } = blog;
   return (
     <DefaultLayout /* menuProps={menuProps} */>
@@ -66,7 +66,7 @@ export default function Blog({ blog }) {
                 {/* show  media  */}
                 <Paper
                   style={{
-                    backgroundImage: `url("/static/assets/images/placeholder.jpg")`,
+                    backgroundImage: `url("/assets/images/placeholder.jpg")`,
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
                     backgroundSize: "cover"

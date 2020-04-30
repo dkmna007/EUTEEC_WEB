@@ -29,11 +29,7 @@ export const Message = props => {
       alignItems="center"
     >
       <Grid item xs={6} md={3} sm={3}>
-        <img
-          src={`/static/assets/images/${type}.svg`}
-          alt="message"
-          width={"100%"}
-        />
+        <img src={`/assets/images/${type}.svg`} alt="message" width={"100%"} />
       </Grid>
       <br />
 

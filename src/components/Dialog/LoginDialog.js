@@ -73,7 +73,7 @@ export const LoginDialog = () => {
                 <CircularProgress />
               </span>
             ) : (
-              <img src="/static/assets/images/techlogo.png" width={"100%"} />
+              <img src="/assets/images/techlogo.png" width={"100%"} />
             )}
           </div>
 
@@ -94,20 +94,14 @@ export const LoginDialog = () => {
                 signInWithGoogle() && setLoading(true);
               }}
             >
-              <img
-                src="/static/assets/images/google.png"
-                className={classes.logo_1}
-              />
+              <img src="/assets/images/google.png" className={classes.logo_1} />
             </StyledLoginIconButton>
             <StyledLoginIconButton
               onClick={() => {
                 signInWithfacebook() && setLoading(true);
               }}
             >
-              <img
-                src="/static/assets/images/fb.png"
-                className={classes.logo_2}
-              />
+              <img src="/assets/images/fb.png" className={classes.logo_2} />
             </StyledLoginIconButton>
           </Grid>
         </DialogContent>
