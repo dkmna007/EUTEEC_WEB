@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { Typography, Grid, makeStyles, Divider, Box } from "@material-ui/core/";
-import { Container, Header } from "@/components";
+import { Container, Header, Message } from "@/components";
 
 /* constants */
 import { Constants } from "@/constants/About";
-import Head from "next/head";
 
 /* components */
 import LocationCard from "@/components/Cards/LocationCard";
@@ -13,6 +12,8 @@ import MembershipCard from "@/components/Cards/MembershipCard";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 import { AboutTags } from "@/components/HeadTags/AboutTags";
 import { LoginContext } from "@/context/LoginContext/LoginContext";
+import { getTeam } from "@/lib/api";
+import MemberCard from "@/components/Cards/MemberCard";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,7 +44,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const About = () => {
+const About = ({ team, error }) => {
   const classes = useStyles();
   const {
     staticAbout,
@@ -54,10 +55,11 @@ const About = () => {
     euteecDescription
   } = Constants();
   const menuProps = useContext(LoginContext);
-
+  console.log(team);
   return (
     <div>
       <AboutTags />
+
       <DefaultLayout menuProps={menuProps}>
         <Header
           title={staticAbout.Title}
@@ -93,13 +95,118 @@ const About = () => {
           background={"rgba(255, 255, 255, 0)"}
         >
           {/* TEAM SECTION*/}
+          <Message
+            type="error"
+            show={error}
+            message="oops!could not load EUTEEC team"
+          />
+          <Grid>
+            <Typography
+              color="primary"
+              align="center"
+              variant="h5"
+              className={(classes.subT, classes.subheading)}
+            >
+              {staticAbout.subtitle2}
+            </Typography>
+          </Grid>
+          <br /> <br />
+          <Grid container justify="space-evenly" spacing={2}>
+            <Grid item xs={12}>
+              <Typography
+                className={classes.subheading}
+                align="center"
+                variant="h6"
+              >
+                OFFICE
+              </Typography>
+              <div className={classes.underline}></div>
+            </Grid>
+            <br />
+            {team?.map(profiler => {
+              return (
+                profiler.membershipCategory === "OFFICE" && (
+                  <Grid item md={4} sm={6} xs={12}>
+                    <MemberCard profiler={profiler} />
+                  </Grid>
+                )
+              );
+            })}
+          </Grid>
+          <br /> <br />
+          <Grid container justify="space-evenly" spacing={2}>
+            <Grid item xs={12}>
+              <Typography
+                className={classes.subheading}
+                align="center"
+                variant="h6"
+              >
+                ENGINEERS AND DEVELOPERS
+              </Typography>
+              <div className={classes.underline}></div>
+            </Grid>
+            <br />
+            {team?.map(profiler => {
+              return (
+                profiler.membershipCategory === "ENGINEERS AND DEVELOPERS" && (
+                  <Grid item md={4} sm={6} xs={12}>
+                    <MemberCard profiler={profiler} />
+                  </Grid>
+                )
+              );
+            })}
+          </Grid>
+          <br /> <br />
+          <Grid container justify="space-evenly" spacing={2}>
+            <Grid item xs={12}>
+              <Typography
+                className={classes.subheading}
+                align="center"
+                variant="h6"
+              >
+                MEMBERS AND LEARNERS
+              </Typography>
+              <div className={classes.underline}></div>
+            </Grid>
+            <br />
+            {team?.map(profiler => {
+              return (
+                profiler.membershipCategory === "MEMBERS AND LEARNERS" && (
+                  <Grid item md={4} sm={6} xs={12}>
+                    <MemberCard profiler={profiler} />
+                  </Grid>
+                )
+              );
+            })}
+          </Grid>
+          <br /> <br />
+          <Grid container justify="space-evenly" spacing={2}>
+            <Grid item xs={12}>
+              <Typography
+                className={classes.subheading}
+                align="center"
+                variant="h6"
+              >
+                PIONEERS AND ALUMNIS
+              </Typography>
+              <div className={classes.underline}></div>
+            </Grid>
+            <br />
+            {team?.map(profiler => {
+              return (
+                profiler.membershipCategory === "PIONEERS AND ALUMNIS" && (
+                  <Grid item md={4} sm={6} xs={12}>
+                    <MemberCard profiler={profiler} />
+                  </Grid>
+                )
+              );
+            })}
+          </Grid>
           {/* END OF TEAM */}
           <br />
           <Divider />
           <br />
-
           {/* ACTIVITIES SECTION*/}
-
           <Grid container justify="space-evenly" spacing={2}>
             <Grid item xs={12}>
               <Typography
@@ -121,11 +228,9 @@ const About = () => {
               );
             })}
           </Grid>
-
           <br />
           <br />
           {/* PARTNERS SECTION */}
-
           <Grid container justify="center" spacing={1}>
             <Grid item xs={12}>
               <Typography
@@ -153,6 +258,38 @@ const About = () => {
       </DefaultLayout>
     </div>
   );
+};
+About.getInitialProps = async () => {
+  let team;
+  const res = await getTeam();
+  if (res.error) return res;
+
+  /* verified team */
+  team = res.filter(i => {
+    return i.isVerified === true;
+  });
+
+  team = team.map(
+    ({
+      userId,
+      userAvator,
+      name,
+      bio,
+      profession,
+      education,
+      membershipCategory
+    }) => ({
+      userId,
+      userAvator,
+      name,
+      bio,
+      profession,
+      education,
+      membershipCategory
+    })
+  );
+
+  return { team };
 };
 
 export default About;

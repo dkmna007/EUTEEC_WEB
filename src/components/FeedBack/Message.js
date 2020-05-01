@@ -11,9 +11,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const Message = props => {
+export const Message = ({ message, show, type, action }) => {
   const classes = useStyles();
-  const { message, show, type, action } = props;
 
   const btTxt =
     (type === "info" && "Go Back") ||
@@ -37,7 +36,7 @@ export const Message = props => {
         <h6>{message || "Somthing is not right"}</h6>
       </div>
       <br />
-      <Button onClick={() => action()} variant="contained">
+      <Button onClick={() => action && action()} variant="contained">
         {btTxt}
       </Button>
     </Grid>

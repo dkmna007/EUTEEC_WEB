@@ -47,6 +47,7 @@ export default function Blog({ blog }) {
   const commentState = useBlogComments({ bid });
   // const menuProps = useContext(LoginContext);
   let { author } = blog;
+
   return (
     <DefaultLayout /* menuProps={menuProps} */>
       <div className={classes.root}>

@@ -14,6 +14,7 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 
 import LoginContextProvider from "@/context/LoginContext/LoginContextProvider";
 import { LoginDialog } from "@/components/Dialog/LoginDialog";
+import { PersistGate } from "redux-persist/integration/react";
 // import "react-mde/lib/styles/css/react-mde-all.css";
 
 const _App = withRedux(store)(
@@ -44,10 +45,12 @@ const _App = withRedux(store)(
           <MuiThemeProvider theme={theme}>
             <CssBaseline />
             <Provider store={store}>
-              <LoginContextProvider>
-                <LoginDialog />
-                <Component {...pageProps} />
-              </LoginContextProvider>
+              <PersistGate persistor={store.__PERSISTOR} loading={null}>
+                <LoginContextProvider>
+                  <LoginDialog />
+                  <Component {...pageProps} />
+                </LoginContextProvider>
+              </PersistGate>
             </Provider>
           </MuiThemeProvider>
         </Container>
