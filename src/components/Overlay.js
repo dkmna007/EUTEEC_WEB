@@ -25,7 +25,9 @@ export const Overlay = ({ overlayText, isVisible }) => {
       <Backdrop className={classes.backdrop} open={isVisible}>
         <CircularProgress color="primary" />
         <br />
-        <Typography align="center">{overlayText}</Typography>
+        <Typography color="textPrimary" align="center">
+          {overlayText}
+        </Typography>
       </Backdrop>
     </div>
   );
