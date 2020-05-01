@@ -45,12 +45,12 @@ const _App = withRedux(store)(
           <MuiThemeProvider theme={theme}>
             <CssBaseline />
             <Provider store={store}>
-              <PersistGate persistor={store.__PERSISTOR} loading={null}>
-                <LoginContextProvider>
-                  <LoginDialog />
-                  <Component {...pageProps} />
-                </LoginContextProvider>
-              </PersistGate>
+              {/* <PersistGate persistor={store.__PERSISTOR} loading={null}> */}
+              <LoginContextProvider>
+                <LoginDialog />
+                <Component {...pageProps} />
+              </LoginContextProvider>
+              {/* </PersistGate> */}
             </Provider>
           </MuiThemeProvider>
         </Container>

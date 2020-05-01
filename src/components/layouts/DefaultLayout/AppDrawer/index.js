@@ -24,6 +24,7 @@ export default function AppDrawer({
       // backgroundColor: theme.palette.primary.main
     }
   }));
+
   const theme = useTheme();
   const classes = useDrawerStyles();
   // const { user } = useSelector(state => state.user);
