@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { providers, firebaseAppAuth } from "../firebase/index";
-import { userInfo } from "../store/Actions/Actions";
+import { userInfo } from "../actions/";
 
 const useAuthState = () => {
   const googleProvider = providers.googleProvider;
@@ -42,7 +42,6 @@ const useAuthState = () => {
         var user = result.user;
         // store user to redux store
         user && dispatch(userInfo(user));
-        console.log(user);
       })
       .catch(function (error) {
         // Handle Errors here.

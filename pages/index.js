@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { connect } from "react-redux";
 import { increment, decrement } from "../src/actions";
@@ -14,6 +14,7 @@ import { ListCard as Activities } from "@/components/Cards/ListCard";
 import { Constants } from "@/constants/Home";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 import { HomeTags } from "@/components/HeadTags/HomeTags";
+import { LoginContext } from "@/context/LoginContext/LoginContext";
 
 const useStyles = makeStyles(theme => ({
   headings: {
@@ -31,11 +32,12 @@ const Index = props => {
     app_links,
     projects
   } = Constants();
+  const menuProps = useContext(LoginContext);
 
   return (
     <>
       <HomeTags />
-      <DefaultLayout /* menuProps={menuProps} */>
+      <DefaultLayout menuProps={menuProps}>
         <div className="container">
           {/* App Carausel */}
           <CarouselAuto />
