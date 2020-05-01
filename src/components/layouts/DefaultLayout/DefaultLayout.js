@@ -4,6 +4,8 @@ import AppBar from "./AppBar/";
 import { makeStyles } from "@material-ui/core/styles";
 import AppFooter from "./AppFooter";
 import AppDrawer from "./AppDrawer/";
+import Router from "next/router";
+import Spinner from "@/components/Progress/Spinner";
 
 const drawerWidth = 240;
 
@@ -24,8 +26,21 @@ const useStyles = makeStyles(theme => ({
 
 function DefaultLayout(props) {
   const { menuProps, children } = props;
-  const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [loading, setloading] = React.useState(false);
+  React.useEffect(() => {
+    Router.onRouteChangeStart = () => {
+      setloading(true);
+    };
+    Router.onRouteChangeComplete = () => {
+      setloading(false);
+    };
+    Router.onRouteChangeError = () => {
+      setloading(false);
+    };
+  }, []);
+
+  const classes = useStyles();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -68,6 +83,7 @@ function DefaultLayout(props) {
 
         <main className={classes.content}>
           <div className={classes.toolbar} />
+          <Spinner active={loading}>loading...</Spinner>
           {children}
         </main>
       </div>

@@ -10,6 +10,8 @@ import store from "../src/store";
 import theme from "../src/utils/theme";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-mde/lib/styles/css/react-mde-all.css";
+
 import LoginContextProvider from "@/context/LoginContext/LoginContextProvider";
 import { LoginDialog } from "@/components/Dialog/LoginDialog";
 // import "react-mde/lib/styles/css/react-mde-all.css";
