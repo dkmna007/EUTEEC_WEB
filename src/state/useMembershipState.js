@@ -84,9 +84,9 @@ const useMembershipState = ({ action }) => {
   } = useAxios("get", API_MEMBER_GET_ONE(user && user.uid));
 
   React.useEffect(() => {
-    getMember();
+    !member && getMember();
     // action === "update" ? getMember() : null;
-  }, [action]);
+  });
 
   /* check if member obj has value then spread to user input state */
   React.useEffect(() => {
@@ -222,7 +222,7 @@ const useMembershipState = ({ action }) => {
   };
   const viewMembershipStatus = () => {
     if (action === "update") {
-      router.push(`/profile/${user && user.uid}`);
+      router.push("/profile/[userId]", `/profile/${user && user.uid}`);
     } else {
       location.reload();
     }
@@ -231,6 +231,7 @@ const useMembershipState = ({ action }) => {
   const handleGoBack = () => {
     router.back();
   };
+
   return {
     handleFormChange,
     handleResetProfilePic,

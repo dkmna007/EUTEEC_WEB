@@ -7,7 +7,6 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import store from "../src/store";
-import theme from "../src/utils/theme";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-mde/lib/styles/css/react-mde-all.css";
@@ -15,6 +14,7 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 import LoginContextProvider from "@/context/LoginContext/LoginContextProvider";
 import { LoginDialog } from "@/components/Dialog/LoginDialog";
 import { PersistGate } from "redux-persist/integration/react";
+import { DARK_THEME } from "@/app-theme";
 // import "react-mde/lib/styles/css/react-mde-all.css";
 
 const _App = withRedux(store)(
@@ -42,7 +42,7 @@ const _App = withRedux(store)(
           <Head>
             <title>Euteec</title>
           </Head>
-          <MuiThemeProvider theme={theme}>
+          <MuiThemeProvider theme={DARK_THEME}>
             <CssBaseline />
             <Provider store={store}>
               {/* <PersistGate persistor={store.__PERSISTOR} loading={null}> */}

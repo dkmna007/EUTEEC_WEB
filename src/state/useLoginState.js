@@ -43,7 +43,7 @@ const useLoginState = () => {
   };
 
   const handleViewProfile = () => {
-    user && router.push(`/profile/${user.uid}`);
+    user && router.push("/profile/[userId]", `/profile/${user.uid}`);
   };
   return {
     closeLoginDialog,

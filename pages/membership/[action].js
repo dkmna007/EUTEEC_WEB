@@ -29,6 +29,7 @@ export default function Membership() {
   const classes = useStyles();
   const router = useRouter();
   const { action } = router.query;
+
   const memberProps = useMembershipState({ action });
 
   const { occupation, categories } = Constants();
