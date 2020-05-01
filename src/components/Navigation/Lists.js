@@ -6,24 +6,64 @@ import Blog from "@material-ui/icons/Web";
 import AboutUs from "@material-ui/icons/People";
 import Items from "./ListItems";
 import List from "@material-ui/core/List";
+import { makeStyles } from "@material-ui/core";
 
-export default function Lists({ handleDrawerClose, ...rest }) {
+const useStyles = makeStyles(theme => ({
+  root: {
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+      flexDirection: "row",
+      padding: 0,
+      fontSize: "14px"
+    }
+    //   [theme.breakpoints.down("sm")]: {
+
+    // }
+  }
+}));
+
+export default function Lists({ handleDrawerToggle }) {
+  const classes = useStyles();
   const isDisabled = false;
   return (
-    <List {...rest}>
-      {Items(<Home />, "HOME", "/", handleDrawerClose, isDisabled)}
-      {Items(<AboutUs />, "About Us", "/about", handleDrawerClose, isDisabled)}
-      {Items(<Mail />, "Contact Us", "/contact", handleDrawerClose, isDisabled)}
+    <List className={classes.root}>
+      <Items
+        iconType={<Home />}
+        linkName="HOME"
+        linkTo="/"
+        action={handleDrawerToggle}
+        disabled={isDisabled}
+      />
+      <Items
+        iconType={<AboutUs />}
+        linkName="About Us"
+        linkTo="/about"
+        action={handleDrawerToggle}
+        disabled={isDisabled}
+      />
+      <Items
+        iconType={<Mail />}
+        linkName="Contact Us"
+        linkTo="/contact"
+        action={handleDrawerToggle}
+        disabled={isDisabled}
+      />
 
-      {Items(<Blog />, "Blog ", "/blog", handleDrawerClose, isDisabled)}
+      <Items
+        iconType={<Blog />}
+        linkName="Blog "
+        linkTo="/blog"
+        action={handleDrawerToggle}
+        disabled={isDisabled}
+      />
 
-      {Items(
-        <ManageBlogs />,
-        "settings ",
-        "/settings",
-        handleDrawerClose,
-        isDisabled
-      )}
+      <Items
+        iconType={<ManageBlogs />}
+        linkName="Settings "
+        linkTo="/settings"
+        action={handleDrawerToggle}
+        disabled={isDisabled}
+      />
     </List>
   );
 }

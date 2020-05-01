@@ -6,8 +6,9 @@ import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   backdrop: {
+    // background: "#17141d",
     zIndex: theme.zIndex.drawer + 1,
-    color: "#fff",
+    // color: "#fff",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -22,7 +23,7 @@ export const Overlay = ({ overlayText, isVisible }) => {
   return (
     <div>
       <Backdrop className={classes.backdrop} open={isVisible}>
-        <CircularProgress color="inherit" />
+        <CircularProgress color="primary" />
         <br />
         <Typography align="center">{overlayText}</Typography>
       </Backdrop>

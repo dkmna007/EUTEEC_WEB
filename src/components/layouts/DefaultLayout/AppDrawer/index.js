@@ -55,7 +55,7 @@ export default function AppDrawer({
           </Typography>
         </Grid>
         {/* Drawer List */}
-        <Lists />
+        <Lists {...{ handleDrawerToggle }} />
       </Drawer>
     </nav>
   );

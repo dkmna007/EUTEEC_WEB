@@ -86,8 +86,8 @@ const About = ({ team, error }) => {
           </Grid>
         </Container>
         <br />
-        <br />
         <Divider />
+        <br />
         <Container
           elevation={0}
           top={2}
@@ -100,108 +100,113 @@ const About = ({ team, error }) => {
             show={error}
             message="oops!could not load EUTEEC team"
           />
-          <Grid>
-            <Typography
-              color="primary"
-              align="center"
-              variant="h5"
-              className={(classes.subT, classes.subheading)}
-            >
-              {staticAbout.subtitle2}
-            </Typography>
-          </Grid>
-          <br /> <br />
-          <Grid container justify="space-evenly" spacing={2}>
-            <Grid item xs={12}>
-              <Typography
-                className={classes.subheading}
-                align="center"
-                variant="h6"
-              >
-                OFFICE
-              </Typography>
-              <div className={classes.underline}></div>
-            </Grid>
-            <br />
-            {team?.map(profiler => {
-              return (
-                profiler.membershipCategory === "OFFICE" && (
-                  <Grid item md={4} sm={6} xs={12}>
-                    <MemberCard profiler={profiler} />
-                  </Grid>
-                )
-              );
-            })}
-          </Grid>
-          <br /> <br />
-          <Grid container justify="space-evenly" spacing={2}>
-            <Grid item xs={12}>
-              <Typography
-                className={classes.subheading}
-                align="center"
-                variant="h6"
-              >
-                ENGINEERS AND DEVELOPERS
-              </Typography>
-              <div className={classes.underline}></div>
-            </Grid>
-            <br />
-            {team?.map(profiler => {
-              return (
-                profiler.membershipCategory === "ENGINEERS AND DEVELOPERS" && (
-                  <Grid item md={4} sm={6} xs={12}>
-                    <MemberCard profiler={profiler} />
-                  </Grid>
-                )
-              );
-            })}
-          </Grid>
-          <br /> <br />
-          <Grid container justify="space-evenly" spacing={2}>
-            <Grid item xs={12}>
-              <Typography
-                className={classes.subheading}
-                align="center"
-                variant="h6"
-              >
-                MEMBERS AND LEARNERS
-              </Typography>
-              <div className={classes.underline}></div>
-            </Grid>
-            <br />
-            {team?.map(profiler => {
-              return (
-                profiler.membershipCategory === "MEMBERS AND LEARNERS" && (
-                  <Grid item md={4} sm={6} xs={12}>
-                    <MemberCard profiler={profiler} />
-                  </Grid>
-                )
-              );
-            })}
-          </Grid>
-          <br /> <br />
-          <Grid container justify="space-evenly" spacing={2}>
-            <Grid item xs={12}>
-              <Typography
-                className={classes.subheading}
-                align="center"
-                variant="h6"
-              >
-                PIONEERS AND ALUMNIS
-              </Typography>
-              <div className={classes.underline}></div>
-            </Grid>
-            <br />
-            {team?.map(profiler => {
-              return (
-                profiler.membershipCategory === "PIONEERS AND ALUMNIS" && (
-                  <Grid item md={4} sm={6} xs={12}>
-                    <MemberCard profiler={profiler} />
-                  </Grid>
-                )
-              );
-            })}
-          </Grid>
+          {team && (
+            <>
+              <Grid>
+                <Typography
+                  color="primary"
+                  align="center"
+                  variant="h5"
+                  className={(classes.subT, classes.subheading)}
+                >
+                  {staticAbout.subtitle2}
+                </Typography>
+              </Grid>
+              <br /> <br />
+              <Grid container justify="space-evenly" spacing={2}>
+                <Grid item xs={12}>
+                  <Typography
+                    className={classes.subheading}
+                    align="center"
+                    variant="h6"
+                  >
+                    OFFICE
+                  </Typography>
+                  <div className={classes.underline}></div>
+                </Grid>
+                <br />
+                {team?.map(profiler => {
+                  return (
+                    profiler.membershipCategory === "OFFICE" && (
+                      <Grid item md={4} sm={6} xs={12}>
+                        <MemberCard profiler={profiler} />
+                      </Grid>
+                    )
+                  );
+                })}
+              </Grid>
+              <br /> <br />
+              <Grid container justify="space-evenly" spacing={2}>
+                <Grid item xs={12}>
+                  <Typography
+                    className={classes.subheading}
+                    align="center"
+                    variant="h6"
+                  >
+                    ENGINEERS AND DEVELOPERS
+                  </Typography>
+                  <div className={classes.underline}></div>
+                </Grid>
+                <br />
+                {team?.map(profiler => {
+                  return (
+                    profiler.membershipCategory ===
+                      "ENGINEERS AND DEVELOPERS" && (
+                      <Grid item md={4} sm={6} xs={12}>
+                        <MemberCard profiler={profiler} />
+                      </Grid>
+                    )
+                  );
+                })}
+              </Grid>
+              <br /> <br />
+              <Grid container justify="space-evenly" spacing={2}>
+                <Grid item xs={12}>
+                  <Typography
+                    className={classes.subheading}
+                    align="center"
+                    variant="h6"
+                  >
+                    MEMBERS AND LEARNERS
+                  </Typography>
+                  <div className={classes.underline}></div>
+                </Grid>
+                <br />
+                {team?.map(profiler => {
+                  return (
+                    profiler.membershipCategory === "MEMBERS AND LEARNERS" && (
+                      <Grid item md={4} sm={6} xs={12}>
+                        <MemberCard profiler={profiler} />
+                      </Grid>
+                    )
+                  );
+                })}
+              </Grid>
+              <br /> <br />
+              <Grid container justify="space-evenly" spacing={2}>
+                <Grid item xs={12}>
+                  <Typography
+                    className={classes.subheading}
+                    align="center"
+                    variant="h6"
+                  >
+                    PIONEERS AND ALUMNIS
+                  </Typography>
+                  <div className={classes.underline}></div>
+                </Grid>
+                <br />
+                {team?.map(profiler => {
+                  return (
+                    profiler.membershipCategory === "PIONEERS AND ALUMNIS" && (
+                      <Grid item md={4} sm={6} xs={12}>
+                        <MemberCard profiler={profiler} />
+                      </Grid>
+                    )
+                  );
+                })}
+              </Grid>
+            </>
+          )}
           {/* END OF TEAM */}
           <br />
           <Divider />

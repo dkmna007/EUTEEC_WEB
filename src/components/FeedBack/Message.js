@@ -36,7 +36,14 @@ export const Message = ({ message, show, type, action }) => {
         <h6>{message || "Somthing is not right"}</h6>
       </div>
       <br />
-      <Button onClick={() => action && action()} variant="contained">
+      <Button
+        onClick={() =>
+          action
+            ? action()
+            : typeof location !== "undefined" && location.reload()
+        }
+        variant="contained"
+      >
         {btTxt}
       </Button>
     </Grid>

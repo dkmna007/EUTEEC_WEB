@@ -6,6 +6,7 @@ import AppFooter from "./AppFooter";
 import AppDrawer from "./AppDrawer/";
 import Router from "next/router";
 import Spinner from "@/components/Progress/Spinner";
+import { Overlay } from "@/components/Overlay";
 
 const drawerWidth = 240;
 
@@ -83,10 +84,11 @@ function DefaultLayout(props) {
 
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Spinner active={loading}>loading...</Spinner>
+          <Overlay overlayText="loading" isVisible={loading} />
           {children}
         </main>
       </div>
+
       <div className={classes.footer}>
         <AppFooter handleClick={handleScrollUpClick} />
       </div>

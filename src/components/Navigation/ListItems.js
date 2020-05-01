@@ -77,7 +77,7 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
-const Items = (iconType, linkName, linkTo, action_1, disabled) => {
+const Items = ({ iconType, linkName, linkTo, action, disabled }) => {
   const classes = useStyles();
   const router = useRouter();
   return (
@@ -89,6 +89,7 @@ const Items = (iconType, linkName, linkTo, action_1, disabled) => {
         selected={router.pathname === linkTo}
         to={linkTo}
         disabled={disabled}
+        onClick={() => action && action()}
       >
         <ListItemIcon>{iconType}</ListItemIcon>
         <ListItemText primary={linkName} />
