@@ -64,6 +64,7 @@ export default function BlogsTable() {
     <>
       <DeleteDialog {...blogProps} />
       <MaterialTable
+        style={{ background: "#17141d" }}
         title={""}
         columns={columns}
         data={blogProps.userBlogs || []}

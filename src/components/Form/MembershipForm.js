@@ -46,7 +46,7 @@ export const MembershipForm = props => {
   const title = action === "join" && "Club Membership Registration";
 
   return (
-    <Card>
+    <Card style={{ background: "#17141d" }}>
       <CardHeader subheader={subheader} title={title} />
       <Divider />
       <CardContent>

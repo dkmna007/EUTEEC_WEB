@@ -49,8 +49,8 @@ export default function Membership() {
         />
         <Container>
           <Overlay
-            overlayText="setting up environment..."
-            isVisible={memberProps.isGetUserLoading}
+            overlayText={"setting up environment..."}
+            isVisible={!memberProps.member || memberProps.isGetUserLoading}
           />
 
           <Grid
@@ -68,6 +68,7 @@ export default function Membership() {
             }
           >
             <Grid item lg={4} md={6} xl={4} xs={12}>
+              {/* profile picture setting */}
               <AccountProfile {...memberProps} />
             </Grid>
             <Grid item lg={8} md={6} xl={8} xs={12}>

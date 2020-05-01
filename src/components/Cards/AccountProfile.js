@@ -15,9 +15,10 @@ import {
 } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
+import RemoveIcon from "@material-ui/icons/RemoveCircleOutlineOutlined";
 
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: { background: "#17141d" },
   details: {
     display: "flex"
   },
@@ -120,9 +121,14 @@ export const AccountProfile = props => {
           </label>
         </div>
 
-        <Button variant="outlined" onClick={handleResetProfilePic}>
-          Remove picture
-        </Button>
+        <IconButton
+          color="primary"
+          // aria-label="upload picture"
+          component="span"
+          onClick={handleResetProfilePic}
+        >
+          <RemoveIcon />
+        </IconButton>
       </CardActions>
     </Card>
   );

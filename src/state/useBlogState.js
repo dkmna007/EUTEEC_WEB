@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 const useBlogState = ({ action, blogId }) => {
-  const { user } = useSelector(state => state.user);
+  const { user, member } = useSelector(state => state);
   let router = useRouter();
 
   const [userInput, setUserInput] = React.useReducer(
@@ -21,11 +21,13 @@ const useBlogState = ({ action, blogId }) => {
       title: "",
       mediaUrl: "",
       content: "",
-      authorId: user ? user.uid : null,
-      authorName: user ? user.displayName : null,
-      authorAvator: user ? user.photoURL : null,
       category: "Technology",
-
+      author: {
+        id: member ? member.userId : null,
+        name: member ? member.name : null,
+        avator: member ? member.userAvator : null,
+        bio: member ? member.bio : null
+      },
       file: [],
       activeTab: "All",
       success: null,
@@ -103,10 +105,14 @@ const useBlogState = ({ action, blogId }) => {
 
   /* get user blogs effect */
   React.useEffect(() => {
-    if (action === "user" || action === "delete") {
+    if (
+      (action === "user" || action === "delete") &&
+      !userBlogs &&
+      !userBlogsFetchError
+    ) {
       getUserBlogs();
     }
-  }, []);
+  });
   /* update  current blog object */
   React.useEffect(() => {
     if (blog) {
@@ -190,7 +196,7 @@ const useBlogState = ({ action, blogId }) => {
   };
 
   const CheckRequiedFields = () => {
-    if (userInput.title) {
+    if (userInput.title && author) {
       return true;
     }
     return false;

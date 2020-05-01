@@ -84,9 +84,18 @@ const useMembershipState = ({ action }) => {
   } = useAxios("get", API_MEMBER_GET_ONE(user && user.uid));
 
   React.useEffect(() => {
-    !member && getMember();
-    // action === "update" ? getMember() : null;
+    if (!member && !userGetError) {
+      getMember();
+    }
   });
+
+  // React.useEffect(() => {
+  //   if (userGetError) {
+  //     setUserInput({
+  //       error: "please check your network connection"
+  //     });
+  //   }
+  // }, [userGetError]);
 
   /* check if member obj has value then spread to user input state */
   React.useEffect(() => {
@@ -247,6 +256,7 @@ const useMembershipState = ({ action }) => {
     EmailPostError,
     handleUserAvatorChange,
     getMember,
+    member,
     members,
     verifiedMembers,
     usersGetError,
