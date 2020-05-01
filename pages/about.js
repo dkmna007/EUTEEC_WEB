@@ -55,7 +55,7 @@ const About = ({ team, error }) => {
     euteecDescription
   } = Constants();
   const menuProps = useContext(LoginContext);
-  console.log(team);
+
   return (
     <div>
       <AboutTags />

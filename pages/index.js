@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Index = props => {
-  const { counter, increment, decrement } = props;
   const classes = useStyles();
   const {
     homepage,
@@ -126,21 +125,4 @@ const Index = props => {
   );
 };
 
-Index.getInitialProps = ({ store, isServer }) => {
-  store.dispatch(increment(isServer));
-
-  return { isServer };
-};
-
-const mapStateToProps = state => {
-  return {
-    counter: state
-  };
-};
-
-const mapDispatchToProps = dispatch => ({
-  increment: () => dispatch(increment()),
-  decrement: () => dispatch(decrement())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default Index;
