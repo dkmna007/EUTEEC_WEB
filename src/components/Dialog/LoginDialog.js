@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
-
+import React from "react";
 import Dialog from "@material-ui/core/Dialog";
 import { Grid, Typography, IconButton } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { DialogContent, Button, DialogActions } from "@material-ui/core";
-import { CircularProgress } from "@material-ui/core";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
+import { useSelector, useDispatch } from "react-redux";
+import { setisLoginDialogOpen } from "@/actions";
 
 const useAuthStyles = makeStyles(theme => ({
   dialog: {
@@ -48,33 +47,26 @@ export const LoginDialog = () => {
   const {
     signInWithGoogle,
     signInWithfacebook,
-    loginState,
-    closeLoginDialog,
-    completeDialogSignIn,
-    user
-  } = useContext(LoginContext);
+    completeDialogSignIn
+  } = useAuthentication();
 
-  const autoOpen = loginState ? loginState.isLoginDialogOpen : false;
-  const [open, setOpen] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
-
+  const { isLoginDialogOpen, user } = useSelector(state => state);
+  const dispatch = useDispatch();
   React.useEffect(() => {
-    !user && completeDialogSignIn();
-    user && setLoading(false);
+    if (user) {
+      dispatch(setisLoginDialogOpen(false));
+    } else {
+      dispatch(setisLoginDialogOpen(true));
+    }
   }, [user]);
+
   return (
     <>
-      <Dialog open={autoOpen || open} className={classes.dialog}>
+      <Dialog open={isLoginDialogOpen}>
         <DialogContent>
           <br />
           <div className={classes.logo}>
-            {loading ? (
-              <span>
-                <CircularProgress />
-              </span>
-            ) : (
-              <img src="/assets/images/techlogo.png" width={"100%"} />
-            )}
+            <img src="/assets/images/techlogo.png" width={"100%"} />
           </div>
 
           <Typography color="primary" align="center" variant="h4">
@@ -91,14 +83,14 @@ export const LoginDialog = () => {
           <Grid container item xs={12} justify="space-evenly">
             <StyledLoginIconButton
               onClick={() => {
-                signInWithGoogle() && setLoading(true);
+                signInWithGoogle();
               }}
             >
               <img src="/assets/images/google.png" className={classes.logo_1} />
             </StyledLoginIconButton>
             <StyledLoginIconButton
               onClick={() => {
-                signInWithfacebook() && setLoading(true);
+                signInWithfacebook();
               }}
             >
               <img src="/assets/images/fb.png" className={classes.logo_2} />
@@ -106,19 +98,13 @@ export const LoginDialog = () => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          {!autoOpen ? (
-            <Button color="primary" size="small" onClick={() => setOpen(false)}>
-              close
-            </Button>
-          ) : (
-            <Button
-              color="primary"
-              size="small"
-              onClick={() => closeLoginDialog()}
-            >
-              close
-            </Button>
-          )}
+          <Button
+            color="primary"
+            size="small"
+            onClick={() => dispatch(setisLoginDialogOpen(false))}
+          >
+            close
+          </Button>
         </DialogActions>
       </Dialog>
     </>

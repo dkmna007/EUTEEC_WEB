@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
 import { Header, Container } from "@/components";
 import BlogsTable from "@/components/Table/Blogs";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
+
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 
 export default function UserBlogs() {
-  const menuProps = useContext(LoginContext);
   return (
-    <DefaultLayout menuProps={menuProps}>
+    <DefaultLayout>
       <Header
         title={"BLOGS"}
         subTitle={"Manage all your blogs in one place"}

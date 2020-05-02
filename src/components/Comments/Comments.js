@@ -5,7 +5,7 @@ import ReplyIcon from "@material-ui/icons/Reply";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ProgressButton from "../Progress/ProgressButton";
 import { formatDistanceToNow } from "date-fns";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
+import { setisLoginDialogOpen } from "@/actions";
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -87,7 +87,8 @@ export const Comments = props => {
     isCommentPostLoading
   } = props;
 
-  const { handleLogIn, user } = useContext(LoginContext);
+  const { user } = useSelector(state => state);
+  const dispatch = useDispatch();
 
   return (
     <div className={classes.content}>
@@ -165,7 +166,11 @@ export const Comments = props => {
             <ProgressButton
               loading={isCommentPostLoading}
               lable="post comment"
-              handleButtonClick={!user ? handleLogIn : handleCommentsSave}
+              handleButtonClick={
+                !user
+                  ? dispatch(setisLoginDialogOpen(true))
+                  : handleCommentsSave
+              }
               color="primary"
               style={{ borderRadius: 20 }}
             />

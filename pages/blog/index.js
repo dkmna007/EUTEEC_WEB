@@ -14,7 +14,7 @@ import Error from "@/components/FeedBack/Error";
 
 import { Constants } from "@/constants/Blog";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
+import { LoginContext } from "@/context/LoginContext/SessionContext";
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -43,10 +43,9 @@ export default function BlogPage() {
     handleTabClick,
     handleThumbnailClick
   };
-  const menuProps = useContext(LoginContext);
 
   return (
-    <DefaultLayout menuProps={menuProps}>
+    <DefaultLayout>
       <div>
         <Header
           title={"BLOGS"}

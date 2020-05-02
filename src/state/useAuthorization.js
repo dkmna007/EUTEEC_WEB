@@ -1,17 +1,34 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import useAuthState from "./useAuthState";
+import useAuthentication from "./useAuthentication";
+import { useAxios } from "./useFetch/useAxios";
+import { API_MEMBER_GET_ONE } from "@/api";
 
-const useLoginState = () => {
+const useAuthorization = () => {
   const { user } = useSelector(state => state.user);
+
+  /* check if user is member */
+  const {
+    response: member,
+    getResponse: getMember,
+    error: userGetError
+    // isLoading: isGetUserLoading
+  } = useAxios("get", API_MEMBER_GET_ONE(user && user.uid));
+
+  React.useEffect(() => {
+    if (!member && !userGetError) {
+      getMember();
+    }
+  });
 
   const {
     signOut,
     signInWithGoogle,
     signInWithfacebook,
     completeDialogSignIn
-  } = useAuthState();
+  } = useAuthentication();
+
   const router = useRouter();
   const [loginState, setloginState] = React.useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -31,10 +48,7 @@ const useLoginState = () => {
       isLoginDialogOpen: false
     });
   };
-  const handleLogOut = () => {
-    signOut();
-    // router.push("/signin");
-  };
+
   const handleLogIn = () => {
     !user &&
       setloginState({
@@ -47,15 +61,9 @@ const useLoginState = () => {
   };
   return {
     closeLoginDialog,
-    handleLogIn,
-    handleLogOut,
     handleViewProfile,
-    loginState,
-    signInWithGoogle,
-    signInWithfacebook,
-    completeDialogSignIn,
-    user
+    loginState
   };
 };
 
-export default useLoginState;
+export default useAuthorization;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button, Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SaveIcon from "@material-ui/icons/Save";
@@ -11,7 +11,6 @@ import MarkDownEditor from "@/components/Editor/MarkDownEditor";
 import Form from "@/components/Form/Form";
 import DropZone from "@/components/DropZone/DropZone";
 import { Message, StatusDialog } from "@/components";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
 import { useRouter } from "next/router";
 import { Constants } from "@/constants/Blog";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
@@ -37,24 +36,9 @@ export default function CreateBlog() {
   const blogProps = useBlogState({ action, blogId });
 
   const { categories } = Constants();
-  const {
-    handleLogIn,
-    user,
-    handleLogOut,
-
-    handleViewProfile
-  } = useContext(LoginContext);
 
   return (
-    <DefaultLayout
-      menuProps={{
-        ...handleLogIn,
-        user,
-        handleLogOut,
-        user,
-        handleViewProfile
-      }}
-    >
+    <DefaultLayout>
       <div className={classes.root}>
         <Header
           title={`${action} BLOG`}

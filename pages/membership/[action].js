@@ -17,7 +17,7 @@ import {
 import { useRouter } from "next/router";
 import { Constants } from "@/constants/Membership";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
+import { LoginContext } from "@/context/LoginContext/SessionContext";
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -37,10 +37,9 @@ export default function Membership() {
   const subtitle_1 = "Be part of our team by registering for club membership";
   const subtitle_2 =
     "updating you profile makes it easy for people to get in touch with you";
-  const menuProps = useContext(LoginContext);
 
   return (
-    <DefaultLayout menuProps={menuProps}>
+    <DefaultLayout>
       <div className={classes.root}>
         <Header
           title={action == "join" ? "JOIN US" : "UPDATE PROFILE"}

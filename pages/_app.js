@@ -11,7 +11,6 @@ import store from "../src/store";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-mde/lib/styles/css/react-mde-all.css";
 
-import LoginContextProvider from "@/context/LoginContext/LoginContextProvider";
 import { LoginDialog } from "@/components/Dialog/LoginDialog";
 import { PersistGate } from "redux-persist/integration/react";
 import { DARK_THEME } from "@/app-theme";
@@ -46,10 +45,10 @@ const _App = withRedux(store)(
             <CssBaseline />
             <Provider store={store}>
               {/* <PersistGate persistor={store.__PERSISTOR} loading={null}> */}
-              <LoginContextProvider>
-                <LoginDialog />
-                <Component {...pageProps} />
-              </LoginContextProvider>
+
+              <LoginDialog />
+              <Component {...pageProps} />
+
               {/* </PersistGate> */}
             </Provider>
           </MuiThemeProvider>

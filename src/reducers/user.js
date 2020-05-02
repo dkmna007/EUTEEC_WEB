@@ -1,8 +1,9 @@
-import { USER_INFO, MEMBER_INFO } from "../constants";
+import { USER_INFO, MEMBER_INFO, IS_LOGIN_DIALOG_OPEN } from "../constants";
 
 const initialState = {
   member: null,
-  user: null
+  user: null,
+  isLoginDialogOpen: false
 };
 
 function user(state = initialState, action) {
@@ -16,6 +17,12 @@ function user(state = initialState, action) {
       return {
         ...state,
         member: action.member
+      };
+
+    case IS_LOGIN_DIALOG_OPEN:
+      return {
+        ...state,
+        isLoginDialogOpen: action.isLoginDialogOpen
       };
 
     default:

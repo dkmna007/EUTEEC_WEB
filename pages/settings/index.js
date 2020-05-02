@@ -9,9 +9,9 @@ import { Thumbnail as ManageProfile } from "@/components/Cards/Thumbnail";
 import { Thumbnail as JoinUs } from "@/components/Cards/Thumbnail";
 import { Container } from "@/components";
 import Zoom from "@material-ui/core/Zoom";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
 import { useRouter } from "next/router";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
+import { setisLoginDialogOpen } from "@/actions";
 
 const useStyles = makeStyles(theme => ({
   root: {}
@@ -20,26 +20,10 @@ const useStyles = makeStyles(theme => ({
 export default function Settings() {
   const classes = useStyles();
   const router = useRouter();
-
-  const {
-    handleLogIn,
-    user,
-    handleLogOut,
-
-    handleViewProfile
-  } = useContext(LoginContext);
   const settingsProps = {};
-
+  const { user } = useSelector(state => state);
   return (
-    <DefaultLayout
-      menuProps={{
-        ...handleLogIn,
-        user,
-        handleLogOut,
-        user,
-        handleViewProfile
-      }}
-    >
+    <DefaultLayout>
       <div className={classes.root}>
         <Header
           title={"SETTINGS"}
@@ -80,7 +64,7 @@ export default function Settings() {
                             "/membership/[action]",
                             "/membership/join"
                           )
-                        : handleLogIn();
+                        : dispatch(setisLoginDialogOpen(true));
                     }}
                     title={"Join Us"}
                     imgUrl={"/assets/images/team.svg"}

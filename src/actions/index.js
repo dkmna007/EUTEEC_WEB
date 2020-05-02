@@ -1,9 +1,22 @@
-import { INCREMENT, DECREMENT, MEMBER_INFO, USER_INFO } from "../constants";
+import {
+  INCREMENT,
+  DECREMENT,
+  MEMBER_INFO,
+  USER_INFO,
+  IS_LOGIN_DIALOG_OPEN
+} from "../constants";
 
 export function userInfo(user) {
   return {
     type: USER_INFO,
     user
+  };
+}
+
+export function setisLoginDialogOpen(isLoginDialogOpen) {
+  return {
+    type: IS_LOGIN_DIALOG_OPEN,
+    isLoginDialogOpen
   };
 }
 

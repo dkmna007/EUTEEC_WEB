@@ -11,7 +11,6 @@ import ActivityCard from "@/components/Cards/ActivityCard";
 import MembershipCard from "@/components/Cards/MembershipCard";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 import { AboutTags } from "@/components/HeadTags/AboutTags";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
 import { getTeam } from "@/lib/api";
 import MemberCard from "@/components/Cards/MemberCard";
 
@@ -54,13 +53,12 @@ const About = ({ team, error }) => {
     appLogo,
     euteecDescription
   } = Constants();
-  const menuProps = useContext(LoginContext);
 
   return (
     <div>
       <AboutTags />
 
-      <DefaultLayout menuProps={menuProps}>
+      <DefaultLayout>
         <Header
           title={staticAbout.Title}
           subTitle={staticAbout.headerSubTitle}

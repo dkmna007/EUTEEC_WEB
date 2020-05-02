@@ -18,7 +18,6 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import CallIcon from "@material-ui/icons/Call";
 import EditIcon from "@material-ui/icons/Edit";
 import { useRouter } from "next/router";
-import { LoginContext } from "@/context/LoginContext/LoginContext";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 
 const useStyles = makeStyles(theme => ({
@@ -115,10 +114,9 @@ function ProfilePage() {
   const router = useRouter();
   const { userId } = router.query;
   const profileProps = useProfileState({ userId });
-  const menuProps = useContext(LoginContext);
 
   return (
-    <DefaultLayout menuProps={menuProps}>
+    <DefaultLayout>
       <div>
         <Header
           // title={"PROFILE"}

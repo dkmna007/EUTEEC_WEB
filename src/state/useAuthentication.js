@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { providers, firebaseAppAuth } from "../firebase/index";
-import { userInfo } from "../actions/";
+import { userInfo } from "../actions";
 
-const useAuthState = () => {
+const useAuthentication = () => {
   const googleProvider = providers.googleProvider;
   const facebookProvider = providers.facebookProvider;
 
@@ -18,8 +18,10 @@ const useAuthState = () => {
         // The signed-in user info.
         var user = result.user;
         // store user to redux store
-        user && dispatch(userInfo(user));
-        console.log(user);
+
+        if (user) {
+          dispatch(userInfo(user));
+        }
       })
       .catch(function (error) {
         // Handle Errors here.
@@ -82,4 +84,4 @@ const useAuthState = () => {
     completeDialogSignIn
   };
 };
-export default useAuthState;
+export default useAuthentication;
