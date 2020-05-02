@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SaveIcon from "@material-ui/icons/Save";
-import { Header } from "@/components";
+import { Header, Overlay } from "@/components";
 import useBlogState from "@/state/useBlogState";
 
 /* page components */
@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { Constants } from "@/constants/Blog";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 import { setisLoginDialogOpen } from "@/actions/redux-actions";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -38,6 +38,7 @@ export default function CreateBlog() {
   const blogProps = useBlogState({ action, blogId });
   const { categories } = Constants();
   const { user } = useSelector(state => state.user);
+  const dispatch = useDispatch();
   return (
     <DefaultLayout>
       <div className={classes.root}>
@@ -95,11 +96,11 @@ export default function CreateBlog() {
                     variant="contained"
                     color="secondary"
                     disabled={blogProps.isBlogPostPutLoading}
-                    onClick={
+                    onClick={() => {
                       !user
                         ? dispatch(setisLoginDialogOpen(true))
-                        : blogProps.handleBlogSave
-                    }
+                        : blogProps.handleBlogSave();
+                    }}
                     className={classes.button}
                   >
                     {blogProps.progress
@@ -129,6 +130,7 @@ export default function CreateBlog() {
           )}
         </Paper>
       </div>
+      <Overlay isVisible={!blogProps.blog} overlayText={"just a moment..."} />
     </DefaultLayout>
   );
 }

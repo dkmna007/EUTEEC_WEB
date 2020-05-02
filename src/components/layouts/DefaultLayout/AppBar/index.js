@@ -84,7 +84,7 @@ export default function AppBarHeader(props) {
         </Hidden>
         <div className={classes.flex}>{brandComponent}</div>
         {/* AppBar NavList */}
-        <Hidden mdDown>
+        <Hidden smDown>
           <Lists />
         </Hidden>
         {/* Logout Menu */}

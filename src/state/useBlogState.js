@@ -74,7 +74,6 @@ const useBlogState = ({ action, blogId }) => {
     response: blog
   } = useAxios("get", API_BLOG_GET_ONE(blogId ? blogId : action));
 
-  console.log(blogFetchError);
   /* get all blogs for a specific user */
 
   const {
@@ -105,14 +104,11 @@ const useBlogState = ({ action, blogId }) => {
 
   /* get user blogs effect */
   React.useEffect(() => {
-    if (
-      (action === "user" || action === "delete") &&
-      !userBlogs &&
-      !userBlogsFetchError
-    ) {
+    if (!userBlogs && !userBlogsFetchError) {
       getUserBlogs();
     }
   });
+
   /* update  current blog object */
   React.useEffect(() => {
     if (blog) {
@@ -125,11 +121,21 @@ const useBlogState = ({ action, blogId }) => {
       getAllBlogs();
     }
   }, []);
+  /* keep fetching requested blog until errors or blog is found*/
   React.useEffect(() => {
-    if ((blogId && action === "getOne") || action === "update") {
+    if (!blog && !blogFetchError) {
       getBlog();
     }
-  }, [blogId, action]);
+  });
+
+  React.useEffect(() => {
+    if (blogFetchError) {
+      setUserInput({
+        error:
+          "oops! something went wrong please check your internet connection and try again"
+      });
+    }
+  }, [blogFetchError]);
 
   /* post/put blog effect */
   React.useEffect(() => {
@@ -196,14 +202,14 @@ const useBlogState = ({ action, blogId }) => {
   };
 
   const CheckRequiedFields = () => {
-    if (userInput.title && author) {
+    if (userInput.title && userInput.author) {
       return true;
     }
     return false;
   };
 
   const handleThumbnailClick = blog => () => {
-    router.push(`/blogs/${blog._id}`);
+    router.push("/blog/[bid]", `/blog/${blog._id}`);
   };
 
   const handleTabClick = name => () => {
@@ -246,7 +252,7 @@ const useBlogState = ({ action, blogId }) => {
   };
 
   const viewCreatedBlog = () => {
-    router.push(`/blogs/${response._id}`);
+    router.push("/blog/[bid]", `/blog/${response._id}`);
   };
 
   const handleOpenDeleteDialog = () => {

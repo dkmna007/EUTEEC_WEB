@@ -16,14 +16,17 @@ export default function BlogsTable() {
       icon: "edit",
       tooltip: "Edit Blog",
       onClick: (event, rowData) => {
-        router.push(`/blog/action/update?blogId=${rowData._id}`);
+        router.push(
+          "/blog/action/[action]",
+          `/blog/action/update?blogId=${rowData._id}`
+        );
       }
     },
     {
       icon: "visibility",
       tooltip: "View Blog",
       onClick: (event, rowData) => {
-        router.push(`/blog/${rowData._id}`);
+        router.push("/blog/[bid]", `/blog/${rowData._id}`);
       }
     },
     {

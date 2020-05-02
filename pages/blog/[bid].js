@@ -56,7 +56,7 @@ export default function Blog({ blog, error }) {
           // Current={staticAbout.Current}
           image={"https://source.unsplash.com/user/erondu/1600x900"}
         />
-        <Container /* background={"#17141d"} */>
+        <Container background={"#17141d"}>
           {blog && (
             <Grid container justify="space-evenly" spacing={1}>
               <Grid item md={6} sm={6} xs={12}>
@@ -86,13 +86,12 @@ export default function Blog({ blog, error }) {
               {/* <ClapButton onCountChange={onCountChange} /> */}
             </Grid>
           )}
-
-          <Message
-            message={"Ooops!! something went wrong"}
-            show={error}
-            key="error"
-          />
-        </Container>
+        </Container>{" "}
+        <Message
+          message={"Ooops!! something went wrong"}
+          show={error}
+          type="error"
+        />
       </div>
     </DefaultLayout>
   );
