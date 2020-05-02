@@ -6,6 +6,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ProgressButton from "../Progress/ProgressButton";
 import { formatDistanceToNow } from "date-fns";
 import { setisLoginDialogOpen } from "@/actions/redux-actions";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -80,14 +81,13 @@ export const Comments = props => {
   const classes = useStyles();
 
   const {
-    currentUser,
+    user,
     comments,
     handleCommentsSave,
     handleFormChange,
     isCommentPostLoading
   } = props;
 
-  const { user } = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   return (
@@ -148,7 +148,7 @@ export const Comments = props => {
         <div>
           <img
             className={classes.avator}
-            src={currentUser && currentUser.photoURL}
+            src={user && user.photoURL}
             alt="Avator"
           />
 
@@ -166,10 +166,10 @@ export const Comments = props => {
             <ProgressButton
               loading={isCommentPostLoading}
               lable="post comment"
-              handleButtonClick={
+              handleButtonClick={() =>
                 !user
                   ? dispatch(setisLoginDialogOpen(true))
-                  : handleCommentsSave
+                  : handleCommentsSave()
               }
               color="primary"
               style={{ borderRadius: 20 }}

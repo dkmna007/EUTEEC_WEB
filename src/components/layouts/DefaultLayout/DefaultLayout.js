@@ -7,6 +7,7 @@ import AppDrawer from "./AppDrawer/";
 import Router from "next/router";
 import Spinner from "@/components/Progress/Spinner";
 import { Overlay } from "@/components/Overlay";
+import { LoginDialog } from "@/components/Dialog/LoginDialog";
 
 const drawerWidth = 240;
 
@@ -85,6 +86,7 @@ function DefaultLayout(props) {
           <div className={classes.toolbar} />
           <Overlay overlayText="loading" isVisible={loading} />
           {children}
+          <LoginDialog />
         </main>
       </div>
 

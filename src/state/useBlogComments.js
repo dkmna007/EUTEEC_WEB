@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { API_COMMENTS_GET, API_COMMENT_POST } from "@/api/comments";
 const useBlogComments = ({ bid }) => {
   const { user } = useSelector(state => state.user);
-  const currentUser = user;
+
   const [userInput, setUserInput] = React.useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {
@@ -85,7 +85,7 @@ const useBlogComments = ({ bid }) => {
     handleFormChange,
     isCommentPostLoading,
     comments,
-    currentUser
+    user
   };
 };
 

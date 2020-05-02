@@ -18,7 +18,6 @@ import { AuthorCard } from "@/components/Cards/AuthorCard";
 
 import useBlogComments from "@/state/useBlogComments";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
-// import { LoginContext } from "@/context/LoginContext/LoginContext";
 
 import { getAllBlogsWithSlug, getBlogAndMoreBlogs } from "@/lib/api";
 import { BlogTags } from "@/components/HeadTags/BlogTags";
@@ -40,18 +39,15 @@ const useStyles = makeStyles(theme => ({
   mediaCaption: { position: "relative" }
 }));
 
-export default function Blog({ blog }) {
+export default function Blog({ blog, error }) {
   const classes = useStyles();
-
-  let bid = blog._id;
+  let bid = blog?._id;
   const commentState = useBlogComments({ bid });
-  // const menuProps = useContext(LoginContext);
-  let { author } = blog;
 
   return (
     <DefaultLayout /* menuProps={menuProps} */>
       <div className={classes.root}>
-        <BlogTags title={"euteec blog"} blog={blog} />
+        {blog && <BlogTags title={"euteec blog"} blog={blog} />}
         <Header
           title={blog && blog.title}
           subTitle={
@@ -83,7 +79,7 @@ export default function Blog({ blog }) {
                 {/* blog content */}
                 <MarkDown blog={blog} />
                 {/* author  */}
-                <AuthorCard author={author} />
+                <AuthorCard author={{ ...blog }} />
                 <Comments {...commentState} />
               </Grid>
 
@@ -91,12 +87,11 @@ export default function Blog({ blog }) {
             </Grid>
           )}
 
-          {/* <Message
-                message={"Ooops!! something went wrong"}
-                show={blogFetchError}
-                key="error"
-                action={handleRetry}
-              /> */}
+          <Message
+            message={"Ooops!! something went wrong"}
+            show={error}
+            key="error"
+          />
         </Container>
       </div>
     </DefaultLayout>
@@ -104,7 +99,8 @@ export default function Blog({ blog }) {
 }
 
 Blog.getInitialProps = async ({ query }) => {
-  const blog = await getBlogAndMoreBlogs(query.bid);
+  const res = await getBlogAndMoreBlogs(query.bid);
+  if (res.error) return res;
 
-  return { blog: blog };
+  return { blog: res };
 };

@@ -11,7 +11,7 @@ import store from "../src/store";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-mde/lib/styles/css/react-mde-all.css";
 
-import { LoginDialog } from "@/components/Dialog/LoginDialog";
+// import { LoginDialog } from "@/components/Dialog/LoginDialog";
 import { PersistGate } from "redux-persist/integration/react";
 import { DARK_THEME } from "@/app-theme";
 // import "react-mde/lib/styles/css/react-mde-all.css";

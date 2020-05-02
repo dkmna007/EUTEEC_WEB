@@ -7,7 +7,7 @@ import { Header, Overlay, FeedBack, Container } from "@/components";
 
 /* page components */
 import { ContactForm } from "@/components/Form/Contact";
-import { LoginContext } from "@/context/LoginContext/SessionContext";
+
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 
 const useStyles = makeStyles(theme => ({

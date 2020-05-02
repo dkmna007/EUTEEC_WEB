@@ -3,7 +3,7 @@ import { USER_INFO, MEMBER_INFO, IS_LOGIN_DIALOG_OPEN } from "../constants";
 const initialState = {
   member: null,
   user: null,
-  isLoginDialogOpen: false
+  isLoginDialogOpen: true
 };
 
 function user(state = initialState, action) {

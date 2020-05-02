@@ -13,19 +13,11 @@ const fetchWithErrorHandling = async url => {
 };
 
 /* blogs */
-export async function getBlogAndMoreBlogs(slug) {
-  let r = await fetch(`${API_BASE_URL}/api/blogs/${slug}`);
-  let blog = await r.json();
+export const getBlogAndMoreBlogs = async slug =>
+  fetchWithErrorHandling(`${API_BASE_URL}/api/blogs/${slug}`);
 
-  return blog;
-}
-
-export async function getAllBlogsWithSlug() {
-  let r = await fetch(API_BLOGS_GET_ALL);
-  let blogs = await r.json();
-
-  return blogs;
-}
+export const getAllBlogsWithSlug = async () =>
+  fetchWithErrorHandling(API_BLOGS_GET_ALL);
 
 /* team */
 

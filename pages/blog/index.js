@@ -14,7 +14,6 @@ import Error from "@/components/FeedBack/Error";
 
 import { Constants } from "@/constants/Blog";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
-import { LoginContext } from "@/context/LoginContext/SessionContext";
 
 const useStyles = makeStyles(theme => ({
   content: {

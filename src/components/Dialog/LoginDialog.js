@@ -13,8 +13,13 @@ const useAuthStyles = makeStyles(theme => ({
   },
   logo: {
     width: 100,
+    height: 100,
     margin: "auto",
-    overflow: "hidden"
+    marginBottom: 5,
+    overflow: "hidden",
+    background: "white",
+    borderRadius: "50%",
+    border: "solid 1px green"
   },
   credit: {
     textAlign: "center"
@@ -56,31 +61,30 @@ export const LoginDialog = () => {
   React.useEffect(() => {
     if (user) {
       dispatch(setisLoginDialogOpen(false));
-    } else {
-      dispatch(setisLoginDialogOpen(true));
     }
+    completeDialogSignIn();
   }, [user]);
 
   return (
     <>
       <Dialog open={isLoginDialogOpen}>
-        <DialogContent>
+        <DialogContent
+          style={{ background: "#00c853", paddingLeft: 50, paddingRight: 50 }}
+        >
           <br />
           <div className={classes.logo}>
             <img src="/assets/images/techlogo.png" width={"100%"} />
           </div>
 
-          <Typography color="primary" align="center" variant="h4">
-            Euteec
+          <Typography align="center" variant="h5">
+            EUTEEC
           </Typography>
           <br />
           <div style={{ paddingLeft: 50, paddingRight: 50 }}>
-            <h6 className={classes.credit}>Designed by RickTechs</h6>
+            <h6 className={classes.credit}>Designed by Ricktechs</h6>
           </div>
           <br />
-          <Typography align="center" color="textPrimary" variant="h6">
-            How do you like to login?
-          </Typography>
+          <Typography align="center">How do you like to login?</Typography>
           <Grid container item xs={12} justify="space-evenly">
             <StyledLoginIconButton
               onClick={() => {
@@ -98,13 +102,14 @@ export const LoginDialog = () => {
             </StyledLoginIconButton>
           </Grid>
         </DialogContent>
-        <DialogActions>
+        <DialogActions style={{ background: "#1b5e20" }}>
           <Button
-            color="primary"
-            size="small"
+            size="/large"
+            color="inherit"
+            style={{ margin: "auto" }}
             onClick={() => dispatch(setisLoginDialogOpen(false))}
           >
-            close
+            continue without login
           </Button>
         </DialogActions>
       </Dialog>
