@@ -121,6 +121,7 @@ const useBlogState = ({ action, blogId }) => {
       getAllBlogs();
     }
   }, []);
+
   /* keep fetching requested blog until errors or blog is found*/
   React.useEffect(() => {
     if (!blog && !blogFetchError) {
