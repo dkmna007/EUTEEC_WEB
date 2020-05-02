@@ -5,7 +5,7 @@ import ReplyIcon from "@material-ui/icons/Reply";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ProgressButton from "../Progress/ProgressButton";
 import { formatDistanceToNow } from "date-fns";
-import { setisLoginDialogOpen } from "@/actions";
+import { setisLoginDialogOpen } from "@/actions/redux-actions";
 
 const useStyles = makeStyles(theme => ({
   content: {

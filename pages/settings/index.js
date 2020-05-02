@@ -11,7 +11,7 @@ import { Container } from "@/components";
 import Zoom from "@material-ui/core/Zoom";
 import { useRouter } from "next/router";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
-import { setisLoginDialogOpen } from "@/actions";
+import { setisLoginDialogOpen } from "@/actions/redux-actions";
 import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles(theme => ({

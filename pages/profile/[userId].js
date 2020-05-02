@@ -20,7 +20,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import { useRouter } from "next/router";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 import { useSelector, useDispatch } from "react-redux";
-import { setisLoginDialogOpen } from "@/actions";
+import { setisLoginDialogOpen } from "@/actions/redux-actions";
 
 const useStyles = makeStyles(theme => ({
   title: {

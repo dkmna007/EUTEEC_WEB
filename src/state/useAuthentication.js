@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { providers, firebaseAppAuth } from "../firebase/index";
-import { userInfo } from "../actions";
+import { userInfo } from "../actions/redux-actions";
 
 const useAuthentication = () => {
   const googleProvider = providers.googleProvider;

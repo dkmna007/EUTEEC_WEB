@@ -11,6 +11,10 @@ import {
   IconButton,
   Grow
 } from "@material-ui/core";
+import useAuthentication from "@/state/useAuthentication";
+import { setisLoginDialogOpen } from "@/actions/redux-actions";
+import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,17 +25,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function LogoutMenu({
-  handleLogOut,
-  user,
-  handleLogIn,
-  handleViewProfile
-}) {
+export default function LogoutMenu(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-
   const anchorRef = React.useRef(null);
-
+  const { signOut } = useAuthentication();
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.user);
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen);
   };
@@ -97,11 +97,21 @@ export default function LogoutMenu({
                   >
                     {user ? (
                       <>
-                        <MenuItem onClick={handleViewProfile}>Profile</MenuItem>
-                        <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+                        <Link
+                          href="/profile/[userId]"
+                          as={`/profile/${user.uid}`}
+                        >
+                          <MenuItem>Profile</MenuItem>
+                        </Link>
+
+                        <MenuItem onClick={() => signOut()}>Logout</MenuItem>
                       </>
                     ) : (
-                      <MenuItem onClick={handleLogIn}>Login</MenuItem>
+                      <MenuItem
+                        onClick={() => dispatch(setisLoginDialogOpen(true))}
+                      >
+                        Login
+                      </MenuItem>
                     )}
                   </MenuList>
                 </ClickAwayListener>

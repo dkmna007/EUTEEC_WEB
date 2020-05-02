@@ -14,7 +14,7 @@ import { Message, StatusDialog } from "@/components";
 import { useRouter } from "next/router";
 import { Constants } from "@/constants/Blog";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
-import { setisLoginDialogOpen } from "@/actions";
+import { setisLoginDialogOpen } from "@/actions/redux-actions";
 import { useSelector } from "react-redux";
 
 const useStyles = makeStyles(theme => ({

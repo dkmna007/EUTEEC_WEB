@@ -40,7 +40,7 @@ export const AuthorCard = ({ author }) => {
     <Card className={classes.card}>
       <Avatar className={classes.avator} src={author && author.avator} />
       <p>
-        <Link href={`/profile/${author && author.id}`}>
+        <Link href="/profile/[userId]" as={`/profile/${author && author.id}`}>
           <Button
             variant="contained"
             color="primary"

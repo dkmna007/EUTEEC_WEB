@@ -4,7 +4,7 @@ import { Grid, Typography, IconButton } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { DialogContent, Button, DialogActions } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import { setisLoginDialogOpen } from "@/actions";
+import { setisLoginDialogOpen } from "@/actions/redux-actions";
 import useAuthentication from "@/state/useAuthentication";
 
 const useAuthStyles = makeStyles(theme => ({
