@@ -63,7 +63,7 @@ const About = ({ team, error }) => {
         Current={staticAbout.Current}
         image={"/assets/images/tech1.jpg"}
       />
-      <Container /* background={"#17141d"} */>
+      <Container background={"#17141d"}>
         <br />
         {/* MEMBERSHIP*/}
         <Grid container justify="center" spacing={1}>

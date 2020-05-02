@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 export default function BlogsTable() {
   const router = useRouter();
   const [blogId, setblogId] = React.useState(null);
-  const blogProps = useBlogState({ action: "delete", blogId });
+  const blogProps = useBlogState({ action: "delete", blogId, trigger: true });
 
   /* table actions */
   const actions = [
@@ -17,7 +17,7 @@ export default function BlogsTable() {
       tooltip: "Edit Blog",
       onClick: (event, rowData) => {
         router.push(
-          "/blog/action/[action]",
+          ` /blog/action/[action]?blogId=${rowData._id}`,
           `/blog/action/update?blogId=${rowData._id}`
         );
       }

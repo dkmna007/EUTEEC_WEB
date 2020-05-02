@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SaveIcon from "@material-ui/icons/Save";
-import { Header, Overlay } from "@/components";
+import { Header, Overlay, Container } from "@/components";
 import useBlogState from "@/state/useBlogState";
 
 /* page components */
@@ -19,13 +19,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   root: {},
-  content: {
-    // color: "green",
-    padding: theme.spacing(3, 2),
-    marginTop: -70,
-    margin: theme.spacing(0, 2),
-    justifyContent: "center"
-  },
+
   button: {
     marginTop: theme.spacing(-1)
   }
@@ -51,7 +45,7 @@ export default function CreateBlog() {
           image={"https://source.unsplash.com/user/erondu/1600x900"}
         />
 
-        <Paper className={classes.content}>
+        <Container style={{ background: "#17141d" }}>
           {!(blogProps.userInput.success || blogProps.userInput.error) ? (
             <>
               <Grid container justify="center" spacing={1}>
@@ -128,9 +122,12 @@ export default function CreateBlog() {
               />
             </>
           )}
-        </Paper>
+        </Container>
       </div>
-      <Overlay isVisible={!blogProps.blog} overlayText={"just a moment..."} />
+      <Overlay
+        isVisible={!blogProps.blog && !blogProps.userInput.error}
+        overlayText={"just a moment..."}
+      />
     </DefaultLayout>
   );
 }

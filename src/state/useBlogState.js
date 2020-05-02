@@ -11,7 +11,7 @@ import { useAxios } from "./useFetch/useAxios";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
-const useBlogState = ({ action, blogId }) => {
+const useBlogState = ({ action, blogId, trigger }) => {
   const { user, member } = useSelector(state => state.user);
   let router = useRouter();
 
@@ -72,7 +72,7 @@ const useBlogState = ({ action, blogId }) => {
     error: blogFetchError,
     isLoading: isLoadingBlog,
     response: blog
-  } = useAxios("get", API_BLOG_GET_ONE(blogId ? blogId : action));
+  } = useAxios("get", API_BLOG_GET_ONE(blogId && blogId));
 
   /* get all blogs for a specific user */
 
@@ -104,7 +104,7 @@ const useBlogState = ({ action, blogId }) => {
 
   /* get user blogs effect */
   React.useEffect(() => {
-    if (!userBlogs && !userBlogsFetchError) {
+    if (!userBlogs && !userBlogsFetchError && trigger) {
       getUserBlogs();
     }
   });
@@ -124,7 +124,7 @@ const useBlogState = ({ action, blogId }) => {
 
   /* keep fetching requested blog until errors or blog is found*/
   React.useEffect(() => {
-    if (!blog && !blogFetchError) {
+    if (!blog && !blogFetchError && blogId) {
       getBlog();
     }
   });
