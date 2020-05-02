@@ -142,7 +142,10 @@ function ProfilePage() {
                 user &&
                 profileProps &&
                 user.uid === profileProps.userInput.userId
-                  ? router.push("/membership/update")
+                  ? router.push(
+                      `/membership/[action]?userId=${userId}`,
+                      `/membership/update?userId=${userId}`
+                    )
                   : dispatch(setisLoginDialogOpen());
               }}
             >

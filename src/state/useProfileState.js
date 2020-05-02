@@ -39,7 +39,7 @@ const useProfileState = ({ action, isAuthorMember, userId }) => {
       setUserInput({ ...member[0] });
     }
     if (member && member.length < 1 && !isAuthorMember) {
-      router.push("/errors/");
+      // router.push("/errors/"); handle join membership
     }
   }, [member]);
 

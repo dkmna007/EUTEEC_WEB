@@ -19,6 +19,9 @@ export const getBlogAndMoreBlogs = async slug =>
 export const getAllBlogsWithSlug = async () =>
   fetchWithErrorHandling(API_BLOGS_GET_ALL);
 
-/* team */
+/* team/members */
 
 export const getTeam = async () => fetchWithErrorHandling(API_MEMBERS_GET_ALL);
+
+export const getMember = async slug =>
+  fetchWithErrorHandling(`${API_BASE_URL}/api/users/${slug}`);

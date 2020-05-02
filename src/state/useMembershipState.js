@@ -10,7 +10,7 @@ import {
 } from "../api";
 import { useRouter } from "next/router";
 
-const useMembershipState = ({ action }) => {
+const useMembershipState = ({ action, member, trigger, error }) => {
   const { user } = useSelector(state => state.user);
   const router = useRouter();
   const [userInput, setUserInput] = React.useReducer(
@@ -53,7 +53,9 @@ const useMembershipState = ({ action }) => {
     }
   })(action);
 
-  /* get all members */
+  /**
+   * get all members
+   */
 
   const {
     response: members,
@@ -62,45 +64,19 @@ const useMembershipState = ({ action }) => {
     isLoading: isGetUsersLoading
   } = useAxios("get", API_MEMBERS_GET_ALL);
 
-  /* filter verified members */
-  const verifiedMembers =
-    members &&
-    members.filter(i => {
-      return i.isVerified === true;
-    });
-
   React.useEffect(() => {
-    if (action === "getAllUsers") {
+    if (trigger === "getAllMembers") {
       getAllMembers();
     }
   }, []);
 
-  /* if action="update" get current member  */
-  const {
-    response: member,
-    getResponse: getMember,
-    error: userGetError,
-    isLoading: isGetUserLoading
-  } = useAxios("get", API_MEMBER_GET_ONE(user && user.uid));
+  /**
+   * check if member obj has value then spread to user input state
+   */
 
   React.useEffect(() => {
-    if (!member && !userGetError) {
-      getMember();
-    }
-  });
-
-  // React.useEffect(() => {
-  //   if (userGetError) {
-  //     setUserInput({
-  //       error: "please check your network connection"
-  //     });
-  //   }
-  // }, [userGetError]);
-
-  /* check if member obj has value then spread to user input state */
-  React.useEffect(() => {
-    if (member && member.length >= 1) {
-      member[0].isVerified
+    if (member) {
+      member.isVerified
         ? setUserInput({
             message:
               "user under this account has already been registered as a member"
@@ -109,14 +85,14 @@ const useMembershipState = ({ action }) => {
             message: "User registration approval pending"
           });
 
-      setUserInput({ ...member[0] });
+      setUserInput({ ...member });
     }
-    if (userGetError) {
+    if (error) {
       setUserInput({
         message: "Check your internet connection and try again"
       });
     }
-  }, [member, userGetError]);
+  }, [member, error]);
 
   /* post/put action */
   const {
@@ -214,6 +190,10 @@ const useMembershipState = ({ action }) => {
     return false;
   };
 
+  /**
+   * save user changes to db
+   */
+
   const handleSave = () => {
     var memberFormData = new FormData();
     for (var key in userInput) {
@@ -221,6 +201,11 @@ const useMembershipState = ({ action }) => {
     }
     CheckRequiedFields() ? postMember(memberFormData) : null;
   };
+
+  /**
+   * try again action
+   */
+
   const handleRetry = () => {
     setUserInput({
       error: null
@@ -229,6 +214,10 @@ const useMembershipState = ({ action }) => {
       success: null
     });
   };
+
+  /**
+   * view member profile
+   */
   const viewMembershipStatus = () => {
     if (action === "update") {
       router.push("/profile/[userId]", `/profile/${user && user.uid}`);
@@ -241,6 +230,17 @@ const useMembershipState = ({ action }) => {
     router.back();
   };
 
+  /**
+   *
+   * show or hide membership form
+   *
+   */
+
+  const isFormVisible =
+    action === "update" && !(userInput.success || userInput.error)
+      ? null
+      : userInput.message || userInput.success || userInput.error;
+
   return {
     handleFormChange,
     handleResetProfilePic,
@@ -248,18 +248,13 @@ const useMembershipState = ({ action }) => {
     handleRetry,
     userInput,
     isUserPostLoading,
-    isGetUserLoading,
+    isFormVisible,
     UserPostError,
     emailResponse,
-    userGetError,
     isPostEmailLoading,
     EmailPostError,
     handleUserAvatorChange,
-    getMember,
-    member,
     members,
-    verifiedMembers,
-    usersGetError,
     isGetUsersLoading,
     uploadingPercentage,
     viewMembershipStatus,

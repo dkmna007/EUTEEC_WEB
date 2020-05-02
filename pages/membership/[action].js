@@ -14,9 +14,9 @@ import {
   Overlay,
   Container
 } from "@/components";
-import { useRouter } from "next/router";
 import { Constants } from "@/constants/Membership";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
+import { getMember } from "@/lib/api";
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -24,12 +24,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Membership() {
+export default function Membership({ member, action, error }) {
   const classes = useStyles();
-  const router = useRouter();
-  const { action } = router.query;
 
-  const memberProps = useMembershipState({ action });
+  const memberProps = useMembershipState({ action, member, error });
 
   const { occupation, categories } = Constants();
 
@@ -46,35 +44,29 @@ export default function Membership() {
           image={"https://source.unsplash.com/user/erondu/1600x900"}
         />
         <Container>
-          <Overlay
+          {/* <Overlay
             overlayText={"setting up environment..."}
-            isVisible={!memberProps.member || memberProps.isGetUserLoading}
-          />
+            isVisible={!member}
+          /> */}
 
           <Grid
             container
             spacing={2}
-            className={
-              action === "update" &&
-              !(memberProps.userInput.success || memberProps.userInput.error)
-                ? null
-                : (memberProps.isGetUserLoading ||
-                    memberProps.userInput.message ||
-                    memberProps.userInput.success ||
-                    memberProps.userInput.error) &&
-                  classes.content
-            }
+            className={memberProps.isFormVisible && classes.content}
           >
+            {/* profile picture setting */}
             <Grid item lg={4} md={6} xl={4} xs={12}>
-              {/* profile picture setting */}
               <AccountProfile {...memberProps} />
             </Grid>
+
+            {/* Membership input Form */}
             <Grid item lg={8} md={6} xl={8} xs={12}>
               <MembershipForm
                 {...{ categories, occupation, action, ...memberProps }}
               />
             </Grid>
           </Grid>
+
           <Message
             message={memberProps.userInput.message}
             show={action === "join" && memberProps.userInput.message}
@@ -106,3 +98,12 @@ export default function Membership() {
     </DefaultLayout>
   );
 }
+
+Membership.getInitialProps = async ({ query }) => {
+  const res = await getMember(query.userId);
+  if (res.error) return { res, ...query };
+
+  const member = res[0];
+
+  return { ...query, member };
+};
