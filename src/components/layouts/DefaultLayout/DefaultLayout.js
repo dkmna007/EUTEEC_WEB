@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function DefaultLayout(props) {
-  const { menuProps, children } = props;
+  const { children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [loading, setloading] = React.useState(false);
   React.useEffect(() => {
@@ -71,7 +71,6 @@ function DefaultLayout(props) {
             height: 400,
             color: "primary"
           }}
-          menuProps={menuProps}
         />
 
         {/* App drawer */}

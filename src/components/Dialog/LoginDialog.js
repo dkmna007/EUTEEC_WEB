@@ -5,6 +5,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { DialogContent, Button, DialogActions } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { setisLoginDialogOpen } from "@/actions";
+import useAuthentication from "@/state/useAuthentication";
 
 const useAuthStyles = makeStyles(theme => ({
   dialog: {
@@ -50,7 +51,7 @@ export const LoginDialog = () => {
     completeDialogSignIn
   } = useAuthentication();
 
-  const { isLoginDialogOpen, user } = useSelector(state => state);
+  const { isLoginDialogOpen, user } = useSelector(state => state.user);
   const dispatch = useDispatch();
   React.useEffect(() => {
     if (user) {

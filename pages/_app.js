@@ -46,7 +46,7 @@ const _App = withRedux(store)(
             <Provider store={store}>
               {/* <PersistGate persistor={store.__PERSISTOR} loading={null}> */}
 
-              <LoginDialog />
+              {/* <LoginDialog /> */}
               <Component {...pageProps} />
 
               {/* </PersistGate> */}

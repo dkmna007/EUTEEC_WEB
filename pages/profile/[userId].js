@@ -19,6 +19,8 @@ import CallIcon from "@material-ui/icons/Call";
 import EditIcon from "@material-ui/icons/Edit";
 import { useRouter } from "next/router";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
+import { useSelector, useDispatch } from "react-redux";
+import { setisLoginDialogOpen } from "@/actions";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -110,7 +112,8 @@ const useStyles = makeStyles(theme => ({
 
 function ProfilePage() {
   const classes = useStyles();
-  const { handleLogIn, user } = useContext(LoginContext);
+  const { user } = useSelector(state => state.user);
+  const dispatch = useDispatch();
   const router = useRouter();
   const { userId } = router.query;
   const profileProps = useProfileState({ userId });
@@ -140,7 +143,7 @@ function ProfilePage() {
                 profileProps &&
                 user.uid === profileProps.userInput.userId
                   ? router.push("/membership/update")
-                  : handleLogIn();
+                  : dispatch(setisLoginDialogOpen());
               }}
             >
               <EditIcon />

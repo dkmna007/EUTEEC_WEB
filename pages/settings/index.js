@@ -12,6 +12,7 @@ import Zoom from "@material-ui/core/Zoom";
 import { useRouter } from "next/router";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 import { setisLoginDialogOpen } from "@/actions";
+import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   root: {}
@@ -21,7 +22,9 @@ export default function Settings() {
   const classes = useStyles();
   const router = useRouter();
   const settingsProps = {};
-  const { user } = useSelector(state => state);
+  const { user } = useSelector(state => state.user);
+
+  const dispatch = useDispatch();
   return (
     <DefaultLayout>
       <div className={classes.root}>

@@ -23,14 +23,7 @@ const useStyles = makeStyles(theme => AppBarStyle);
 export default function AppBarHeader(props) {
   const classes = useStyles();
 
-  const {
-    handleDrawerToggle,
-    color,
-    brand,
-    fixed,
-    absolute,
-    menuProps
-  } = props;
+  const { handleDrawerToggle, color, brand, fixed, absolute } = props;
   React.useEffect(() => {
     if (props.changeColorOnScroll) {
       window.addEventListener("scroll", headerColorChange);
@@ -95,7 +88,7 @@ export default function AppBarHeader(props) {
           <Lists />
         </Hidden>
         {/* Logout Menu */}
-        <LogoutMenu {...menuProps} />
+        <LogoutMenu />
       </Toolbar>
     </AppBar>
   );

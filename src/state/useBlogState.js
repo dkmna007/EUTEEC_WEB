@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 const useBlogState = ({ action, blogId }) => {
-  const { user, member } = useSelector(state => state);
+  const { user, member } = useSelector(state => state.user);
   let router = useRouter();
 
   const [userInput, setUserInput] = React.useReducer(

@@ -17,7 +17,6 @@ import {
 import { useRouter } from "next/router";
 import { Constants } from "@/constants/Membership";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
-import { LoginContext } from "@/context/LoginContext/SessionContext";
 
 const useStyles = makeStyles(theme => ({
   content: {

@@ -14,6 +14,8 @@ import { Message, StatusDialog } from "@/components";
 import { useRouter } from "next/router";
 import { Constants } from "@/constants/Blog";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
+import { setisLoginDialogOpen } from "@/actions";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -34,9 +36,8 @@ export default function CreateBlog() {
   const router = useRouter();
   const { action, blogId } = router.query;
   const blogProps = useBlogState({ action, blogId });
-
   const { categories } = Constants();
-
+  const { user } = useSelector(state => state.user);
   return (
     <DefaultLayout>
       <div className={classes.root}>
@@ -94,7 +95,11 @@ export default function CreateBlog() {
                     variant="contained"
                     color="secondary"
                     disabled={blogProps.isBlogPostPutLoading}
-                    onClick={!user ? handleLogIn : blogProps.handleBlogSave}
+                    onClick={
+                      !user
+                        ? dispatch(setisLoginDialogOpen(true))
+                        : blogProps.handleBlogSave
+                    }
                     className={classes.button}
                   >
                     {blogProps.progress
