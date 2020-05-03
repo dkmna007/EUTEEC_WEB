@@ -29,14 +29,14 @@ export default function Lists({ handleDrawerToggle }) {
     <List className={classes.root}>
       <Items
         iconType={<Home />}
-        linkName="HOME"
+        linkName="Home"
         linkTo="/"
         action={handleDrawerToggle}
         disabled={isDisabled}
       />
       <Items
         iconType={<AboutUs />}
-        linkName="About Us"
+        linkName="About"
         linkTo="/about"
         action={handleDrawerToggle}
         disabled={isDisabled}
@@ -52,7 +52,7 @@ export default function Lists({ handleDrawerToggle }) {
       <Items
         iconType={<Blog />}
         linkName="Blog "
-        linkTo="/blog"
+        linkTo="/blogs"
         action={handleDrawerToggle}
         disabled={isDisabled}
       />

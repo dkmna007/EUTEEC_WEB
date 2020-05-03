@@ -39,9 +39,9 @@ const useStyles = makeStyles(theme => ({
   mediaCaption: { position: "relative" }
 }));
 
-export default function Blog({ blog, error }) {
+export default function Blog({ blog, error, bid }) {
   const classes = useStyles();
-  let bid = blog?._id;
+
   const commentState = useBlogComments({ bid });
 
   return (
@@ -99,7 +99,8 @@ export default function Blog({ blog, error }) {
 
 Blog.getInitialProps = async ({ query }) => {
   const res = await getBlogAndMoreBlogs(query.bid);
-  if (res.error) return res;
+  if (res.error) return { ...res, ...query };
 
-  return { blog: res };
+  const blog = res;
+  return { ...query, blog };
 };
