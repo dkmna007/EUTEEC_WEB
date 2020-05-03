@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React from "react";
 import { DropzoneArea } from "material-ui-dropzone";
 import {
   makeStyles,
@@ -18,10 +18,9 @@ const useStyles = makeStyles(theme => ({
     outlineWidth: 1,
     outlineColor: theme.palette.divider
   },
-  dropzone: {
-    // height: 50
-  },
+  dropzone: {},
   dropzoneText: {
+    color: "#17141d",
     fontSize: 12
   }
 }));
@@ -45,7 +44,12 @@ export default function DropZone(props) {
   return (
     <Card square variant="outlined" className={classes.card}>
       <CardContent>
-        <Typography align="center" variant="h6" component="h3">
+        <Typography
+          color="secondary"
+          align="center"
+          variant="h6"
+          component="h3"
+        >
           {lable}
         </Typography>
 

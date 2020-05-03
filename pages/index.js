@@ -15,7 +15,8 @@ import { HomeTags } from "@/components/HeadTags/HomeTags";
 
 const useStyles = makeStyles(theme => ({
   headings: {
-    margin: theme.spacing(3, 0)
+    margin: theme.spacing(3, 0),
+    color: "#43a047"
   }
 }));
 
@@ -75,33 +76,42 @@ const Index = props => {
                 );
               })}
             </Grid>
+
             {/* Area of Specialisation */}
-            <br />
-            <Divider />
-            <br />
 
-            <Grid container justify="space-between">
-              <Specialisation
-                Subtitle={homepage.subtitle_1}
-                Paragraph={homepage.paragraph_1}
-                Img={"/assets/images/faay.jpg"}
-                data={specialisation_data}
-              />
-            </Grid>
+            <Container
+              elevation={0}
+              top={2}
+              sides={"0px"}
+              background={"rgba(255, 255, 255, 0)"}
+            >
+              <br />
+              <Divider />
+              <br />
 
-            <br />
-            <Divider />
-            <br />
-            {/*Our Main Activities */}
+              <Grid container justify="space-between">
+                <Specialisation
+                  Subtitle={homepage.subtitle_1}
+                  Paragraph={homepage.paragraph_1}
+                  Img={"/assets/images/faay.jpg"}
+                  data={specialisation_data}
+                />
+              </Grid>
 
-            <Grid container container justify="space-between">
-              <Activities
-                Subtitle={homepage.subtitle_2}
-                Paragraph={homepage.paragraph_2}
-                data={activities_data}
-                Img={"/assets/images/euteec.jpg"}
-              />
-            </Grid>
+              <br />
+              <Divider />
+              <br />
+              {/*Our Main Activities */}
+
+              <Grid container container justify="space-between">
+                <Activities
+                  Subtitle={homepage.subtitle_2}
+                  Paragraph={homepage.paragraph_2}
+                  data={activities_data}
+                  Img={"/assets/images/euteec.jpg"}
+                />
+              </Grid>
+            </Container>
 
             <br />
             {/* App Links */}

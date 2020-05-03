@@ -286,19 +286,77 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
           transition: "0.3s",
           "&:hover": { transform: "translateY(-3px)" }
         },
-        "& .MuiButton--viewProfile": {
-          // backgroundImage: "linear-gradient(147deg, #fe8a39 0%, #fd3838 74%)",
-          // boxShadow: "0px 4px 32px rgba(252, 56, 56, 0.4)",
 
-          // paddingLeft: 24,
-          // paddingRight: 24,
-          // color: "#ffffff",
+        "& .MuiButton--viewProfile": {
           borderRadius: 100,
           position: "relative",
           marginLeft: "auto",
           marginRight: "auto",
           height: 20,
           top: -20
+        },
+        "& .MuiButton--editProfile": {
+          borderRadius: "50%",
+          width: 20,
+          height: 20,
+          position: "absolute",
+          top: -20,
+          right: 350,
+
+          [breakpoints.down("sm")]: {
+            right: 1
+          },
+          hide: {
+            display: "none"
+          }
+        },
+        "& .MuiButton--call": {
+          padding: 0,
+          "&:hover": {
+            backgroundColor: "transparent"
+          },
+          "& .MuiButton-label": {
+            color: "green"
+          },
+          "& .MuiTouchRipple-root": {
+            color: "green"
+          }
+        },
+        "& .MuiButton--twitter": {
+          padding: 0,
+          "&:hover": {
+            backgroundColor: "transparent"
+          },
+          "& .MuiButton-label": {
+            color: "rgb(29,161,242)"
+          },
+          "& .MuiTouchRipple-root": {
+            color: "rgb(29,161,242)",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            display: "block",
+            zIndex: 0,
+            overflow: "hidden",
+            position: "absolute",
+            borderRadius: "inherit",
+            pointerEvents: "none"
+          }
+        },
+        "& .MuiButton--fb": {
+          border: "none",
+          padding: 0,
+
+          "&:hover": {
+            backgroundColor: "transparent"
+          },
+          "& .MuiButton-label": {
+            color: "blue"
+          },
+          "& .MuiTouchRipple-root": {
+            color: "blue"
+          }
         }
       },
 

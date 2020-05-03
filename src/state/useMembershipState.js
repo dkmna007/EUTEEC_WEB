@@ -37,9 +37,30 @@ const useMembershipState = ({ action, member, trigger, error }) => {
       success: null,
       error: null,
       message: null,
-      profileCompletess: 60
+      profileCompletess: 60,
+      complete: false
     }
   );
+
+  /**
+   * user profile completeness
+   *
+   *
+   */
+  // let { bio, hobbies } = userInput;
+  // React.useEffect(() => {
+  //   if (bio || hobbies) {
+  //     setUserInput({
+  //       profileCompletess: 80
+  //     });
+  //   }
+
+  //   if (bio && hobbies) {
+  //     setUserInput({
+  //       profileCompletess: 100
+  //     });
+  //   }
+  // }, [bio, hobbies,]);
 
   /* check if action is join or update  */
   const query = (action => {
@@ -89,7 +110,7 @@ const useMembershipState = ({ action, member, trigger, error }) => {
     }
     if (error) {
       setUserInput({
-        message: "Check your internet connection and try again"
+        error: "Check your internet connection and try again"
       });
     }
   }, [member, error]);
@@ -162,12 +183,6 @@ const useMembershipState = ({ action, member, trigger, error }) => {
 
     setUserInput({ [name]: value });
     /* check form completeness */
-    // userInput.bio &&
-    //   setUserInput({ profileCompletess: userInput.profileCompletess + 40 });
-    // userInput.name &&
-    //   setUserInput({ profileCompletess: userInput.profileCompletess + 10 });
-    // userInput.bio &&
-    //   setUserInput({ profileCompletess: userInput.profileCompletess + 10 });
   };
 
   const handleUserAvatorChange = e => {

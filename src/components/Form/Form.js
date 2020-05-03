@@ -8,31 +8,36 @@ import {
   Card,
   Typography,
   Divider,
-  InputAdornment,
+  InputAdornment
 } from "@material-ui/core/";
 import TitleIcon from "@material-ui/icons/Title";
 import CategoryIcon from "@material-ui/icons/Category";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   form: {
     width: "100%",
     outlineStyle: "solid",
     outlineWidth: 1,
-    outlineColor: theme.palette.divider,
-  },
+    outlineColor: theme.palette.divider
+  }
 }));
 
-const GeneralDetailForm = (props) => {
+const GeneralDetailForm = props => {
   const classes = useStyles();
   const { handleFormChange, userInput, categories } = props;
   return (
     <div className={classes.form}>
       <Card square variant="outlined" style={{ maxHeight: 500 }}>
         <CardContent>
-          <Typography align="center" variant="h6" component="h3">
+          <Typography
+            align="center"
+            color="secondary"
+            variant="h6"
+            component="h3"
+          >
             General Details
           </Typography>
           <Divider />
@@ -52,7 +57,7 @@ const GeneralDetailForm = (props) => {
                 <InputAdornment position="start">
                   <TitleIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             onChange={handleFormChange}
             fullWidth
@@ -65,7 +70,7 @@ const GeneralDetailForm = (props) => {
             value={userInput.membershipCategory}
             onChange={handleFormChange}
             SelectProps={{
-              native: true,
+              native: true
             }}
             variant="outlined"
             InputProps={{
@@ -73,11 +78,11 @@ const GeneralDetailForm = (props) => {
                 <InputAdornment position="start">
                   <CategoryIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             fullWidth
           >
-            {categories.map((option) => (
+            {categories.map(option => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -97,7 +102,7 @@ const GeneralDetailForm = (props) => {
                 <InputAdornment position="start">
                   <YouTubeIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             onChange={handleFormChange}
             fullWidth

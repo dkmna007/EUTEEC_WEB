@@ -12,7 +12,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     margin: 20
   },
-  userAvator: {}
+  avatar: {
+    background: "white"
+  }
 }));
 export const LinkCard = props => {
   const { link } = props;
@@ -27,6 +29,7 @@ export const LinkCard = props => {
         <Link
           className={classes.link}
           to={link.href}
+          style={{ color: "#43a047" }}
           //onClick={action_2 ? action_2 : action_1}
         >
           {link.name}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
+import RefreshIcon from "@material-ui/icons/Refresh";
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 400
@@ -42,7 +42,12 @@ export default function Error(props) {
       <br />
       <Grid container justify="center" spacing={1}>
         <Grid item>
-          <Button onClick={() => location.reload()} variant="outlined">
+          <Button
+            endIcon={<RefreshIcon />}
+            color="secondary"
+            onClick={() => location.reload()}
+            variant="text"
+          >
             Try Again
           </Button>
         </Grid>

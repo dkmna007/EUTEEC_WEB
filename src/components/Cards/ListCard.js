@@ -8,7 +8,7 @@ export function ListCard(props) {
     <>
       <Grid item sm={6} md={5} xs={12}>
         <Box mb={3}>
-          <Typography gutterBottom color="primary" variant="h6">
+          <Typography gutterBottom variant="h6" style={{ color: "#43a047" }}>
             {Subtitle}
           </Typography>
           <Typography gutterBottom variant="inherit">

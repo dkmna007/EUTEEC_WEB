@@ -8,12 +8,14 @@ import {
   API_BLOG_DELETE
 } from "@/api";
 import { useAxios } from "./useFetch/useAxios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import { setisLoginDialogOpen } from "@/actions/redux-actions";
 
-const useBlogState = ({ action, blogId, trigger }) => {
+const useBlogState = ({ action, blogId, trigger, error, blog }) => {
   const { user, member } = useSelector(state => state.user);
   let router = useRouter();
+  const dispatch = useDispatch();
 
   const [userInput, setUserInput] = React.useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -66,14 +68,6 @@ const useBlogState = ({ action, blogId, trigger }) => {
     response: blogs
   } = useAxios("get", API_BLOGS_GET_ALL);
 
-  /* get one blog */
-  const {
-    getResponse: getBlog,
-    error: blogFetchError,
-    isLoading: isLoadingBlog,
-    response: blog
-  } = useAxios("get", API_BLOG_GET_ONE(blogId && blogId));
-
   /* get all blogs for a specific user */
 
   const {
@@ -100,45 +94,65 @@ const useBlogState = ({ action, blogId, trigger }) => {
     isLoading: isDeleteBlogLoading
   } = useAxios(query.method, query.url);
 
-  /* event listeners */
+  /**
+   *
+   *
+   * get user blogs effect
+   *
+   *
+   */
 
-  /* get user blogs effect */
   React.useEffect(() => {
     if (!userBlogs && !userBlogsFetchError && trigger) {
       getUserBlogs();
     }
   });
 
-  /* update  current blog object */
+  /**
+   *
+   *
+   * update/spread  current blog object with new properties effect
+   *
+   *
+   */
+
   React.useEffect(() => {
     if (blog) {
       setUserInput({ ...blog });
     }
   }, [blog]);
+  React.useEffect(() => {
+    if (error) {
+      setUserInput({
+        error:
+          "Oops! something went wrong either blog does not exist or poor internet connection"
+      });
+    }
+  }, [error]);
 
+  /**
+   *
+   *
+   * get all blogs effect
+   *
+   *
+   */
   React.useEffect(() => {
     if (action === "getAll") {
       getAllBlogs();
     }
   }, []);
 
-  /* keep fetching requested blog until errors or blog is found*/
-  React.useEffect(() => {
-    if (!blog && !blogFetchError && blogId) {
-      getBlog();
-    }
-  });
+  /**
+   *
+   *
+   *
+   * post/put blog effect
+   *
+   *
+   *
+   */
 
-  React.useEffect(() => {
-    if (blogFetchError) {
-      setUserInput({
-        error:
-          "oops! something went wrong please check your internet connection and try again"
-      });
-    }
-  }, [blogFetchError]);
-
-  /* post/put blog effect */
   React.useEffect(() => {
     if (response) {
       setUserInput({
@@ -154,7 +168,14 @@ const useBlogState = ({ action, blogId, trigger }) => {
     }
   }, [response, blogPostError]);
 
-  /* delete blog effect */
+  /**
+   *
+   *
+   * delete blog effect
+   *
+   *
+   */
+
   React.useEffect(() => {
     userInput.isOpen
       ? null
@@ -181,15 +202,15 @@ const useBlogState = ({ action, blogId, trigger }) => {
     }
   }, [blogDeleteResponse]);
 
-  /* login dialog effect */
-  React.useEffect(() => {
-    user &&
-      setUserInput({
-        openLoginDialog: false
-      });
-  }, [user]);
+  /**
+   *
+   *
+   * actions
+   *
+   *
+   *
+   */
 
-  /* actions functions */
   const handleFormChange = e => {
     const { name, value } = e.target;
     setUserInput({ [name]: value });
@@ -255,6 +276,9 @@ const useBlogState = ({ action, blogId, trigger }) => {
   const viewCreatedBlog = () => {
     router.push("/blog/[bid]", `/blog/${response._id}`);
   };
+  const handleOpenLoginDialog = () => {
+    dispatch(setisLoginDialogOpen(true));
+  };
 
   const handleOpenDeleteDialog = () => {
     setUserInput({
@@ -266,6 +290,21 @@ const useBlogState = ({ action, blogId, trigger }) => {
       isOpen: false
     });
   };
+
+  /**
+   *
+   *
+   * Boolen
+   *
+   *
+   *
+   */
+
+  const isBlogFormVisible =
+    userInput.success || userInput.error ? "none" : "block";
+
+  const canPostBlog = user;
+
   return {
     handleFileChange,
     handleFormChange,
@@ -277,25 +316,26 @@ const useBlogState = ({ action, blogId, trigger }) => {
     handleThumbnailClick,
     handleCloseDeleteDialog,
     handleOpenDeleteDialog,
-
+    handleOpenLoginDialog,
     handleTabClick,
     getAllBlogs,
     onCountChange,
     handleDelete,
     progress,
     userInput,
+    canPostBlog,
     blogsFetchError,
-    blogFetchError,
     isBlogPostPutLoading,
     isLoadingUserBlogs,
     userBlogsFetchError,
     isLoadingBlogs,
     isDeleteBlogLoading,
+    isBlogFormVisible,
     userBlogs,
-    isLoadingBlog,
+    canPostBlog,
     uploadingPercentage,
     blogs,
-    blog,
+
     user
   };
 };

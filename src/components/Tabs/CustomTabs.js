@@ -26,7 +26,7 @@ export default function CustomTabs(props) {
         return (
           <Grid item key={prop.tabName}>
             <Button
-              color={activeTab === prop.tabName ? "secondary" : "primary"}
+              color={activeTab === prop.tabName ? "secondary" : "inherit"}
               variant={activeTab === prop.tabName ? "contained" : "text"}
               className={classes.tabRootButton}
               onClick={handleTabClick(prop.tabName)}

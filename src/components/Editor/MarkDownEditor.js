@@ -9,6 +9,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   editor: {
+    background: "#17141d",
+    color: "white",
     width: "100%",
     outlineStyle: "solid",
     outlineWidth: 1,
@@ -32,7 +34,12 @@ export default function MarkDownEditor(props) {
     <div>
       <Card square variant="outlined">
         <CardContent>
-          <Typography align="center" variant="h6" component="h3">
+          <Typography
+            align="center"
+            color="secondary"
+            variant="h6"
+            component="h3"
+          >
             Blog Content
           </Typography>
         </CardContent>

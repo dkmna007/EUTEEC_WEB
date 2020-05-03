@@ -83,7 +83,6 @@ export default function Membership({ member, action, error }) {
             message={memberProps.userInput.error}
             show={memberProps.userInput.error}
             type="error"
-            action={memberProps.handleRetry}
           />
 
           {/* upload monitor */}
@@ -101,7 +100,8 @@ export default function Membership({ member, action, error }) {
 
 Membership.getInitialProps = async ({ query }) => {
   const res = await getMember(query.userId);
-  if (res.error) return { res, ...query };
+
+  if (res.error) return { ...res, ...query };
 
   const member = res[0];
 

@@ -12,15 +12,16 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import useProfileState from "@/state/useProfileState";
-import { Overlay, Header, Container } from "@/components";
+import { Overlay, Header, Container, Message } from "@/components";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import CallIcon from "@material-ui/icons/Call";
 import EditIcon from "@material-ui/icons/Edit";
-import { useRouter } from "next/router";
+
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
-import { useSelector, useDispatch } from "react-redux";
-import { setisLoginDialogOpen } from "@/actions/redux-actions";
+
+import { getMember } from "@/lib/api";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -35,88 +36,13 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "600px",
     color: "#999",
     textAlign: "center !important"
-  },
-
-  /* alt styles */
-  avator: {
-    width: theme.spacing(18),
-    height: theme.spacing(18),
-    position: "relative",
-    margin: "auto",
-    // border: `solid 1px ${theme.palette.main.primary}`,
-    marginTop: -100,
-    marginBottom: 15,
-    boxShadow: "0px 14px 80px rgba(34, 35, 58, 0.2)"
-  },
-  buttonFb: {
-    border: "none",
-    padding: 0,
-
-    "&:hover": {
-      backgroundColor: "transparent"
-    },
-    "& .MuiButton-label": {
-      color: "blue"
-    },
-    "& .MuiTouchRipple-root": {
-      color: "blue"
-    }
-  },
-  buttonTwitter: {
-    padding: 0,
-    "&:hover": {
-      backgroundColor: "transparent"
-    },
-    "& .MuiButton-label": {
-      color: "rgb(29,161,242)"
-    },
-    "& .MuiTouchRipple-root": {
-      color: "rgb(29,161,242)",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      display: "block",
-      zIndex: 0,
-      overflow: "hidden",
-      position: "absolute",
-      borderRadius: "inherit",
-      pointerEvents: "none"
-    }
-  },
-  buttonCall: {
-    padding: 0,
-    "&:hover": {
-      backgroundColor: "transparent"
-    },
-    "& .MuiButton-label": {
-      color: "green"
-    },
-    "& .MuiTouchRipple-root": {
-      color: "green"
-    }
-  },
-  buttonEdit: {
-    borderRadius: "50%",
-    width: 20,
-    height: 20,
-    position: "absolute",
-    top: -20,
-    right: 350,
-
-    [theme.breakpoints.down("sm")]: {
-      right: 1
-    }
   }
 }));
 
-function ProfilePage() {
+function ProfilePage({ userId, error, member }) {
   const classes = useStyles();
-  const { user } = useSelector(state => state.user);
-  const dispatch = useDispatch();
   const router = useRouter();
-  const { userId } = router.query;
-  const profileProps = useProfileState({ userId });
+  const profileProps = useProfileState({ userId, error, member });
 
   return (
     <DefaultLayout>
@@ -137,16 +63,14 @@ function ProfilePage() {
             <Button
               variant="contained"
               color="secondary"
-              className={classes.buttonEdit}
+              className={"MuiButton--editProfile"}
               onClick={() => {
-                user &&
-                profileProps &&
-                user.uid === profileProps.userInput.userId
+                profileProps.canEditProfile
                   ? router.push(
                       `/membership/[action]?userId=${userId}`,
                       `/membership/update?userId=${userId}`
                     )
-                  : dispatch(setisLoginDialogOpen());
+                  : profileProps.handleOpenloginDialog;
               }}
             >
               <EditIcon />
@@ -157,7 +81,7 @@ function ProfilePage() {
               color="primary"
               className={"MuiButton--viewProfile"}
             >
-              Offline
+              {error ? "Offline" : "Online"}
             </Button>
             <CardContent className={"MuiCardContent-root"}>
               <Typography
@@ -218,13 +142,13 @@ function ProfilePage() {
               </Typography>
             </CardContent>
             <CardActions style={{ justifyContent: "center" }}>
-              <Button className={classes.buttonFb}>
+              <Button className={"MuiButton--fb"}>
                 <FacebookIcon />
               </Button>
-              <Button className={classes.buttonTwitter}>
+              <Button className={"MuiButton--twitter"}>
                 <TwitterIcon />
               </Button>
-              <Button className={classes.buttonCall}>
+              <Button className={"MuiButton--call"}>
                 <CallIcon />
               </Button>
             </CardActions>
@@ -234,5 +158,15 @@ function ProfilePage() {
     </DefaultLayout>
   );
 }
+
+ProfilePage.getInitialProps = async ({ query }) => {
+  const res = await getMember(query.userId);
+
+  if (res.error) return { ...res, ...query };
+
+  const member = res[0];
+
+  return { ...query, member };
+};
 
 export default ProfilePage;

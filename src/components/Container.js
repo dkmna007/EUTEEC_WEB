@@ -41,7 +41,7 @@ export const Container = props => {
           className={classes.actionButton}
           onClick={() =>
             router.push(
-              "/blog/action/[action]",
+              "/blog/action/[action]?blogId=new",
               "/blog/action/create?blogId=new"
             )
           }

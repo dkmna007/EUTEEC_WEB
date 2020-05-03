@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
+import RefreshIcon from "@material-ui/icons/Refresh";
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 400
@@ -37,12 +37,14 @@ export const Message = ({ message, show, type, action }) => {
       </div>
       <br />
       <Button
+        endIcon={<RefreshIcon />}
         onClick={() =>
           action
             ? action()
             : typeof location !== "undefined" && location.reload()
         }
-        variant="contained"
+        color="secondary"
+        variant="text"
       >
         {btTxt}
       </Button>
