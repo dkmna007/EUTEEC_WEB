@@ -38,7 +38,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "npm run build && next export"
   },
   "devDependencies": {
     "redux-devtools-extension": "2.13.7"
