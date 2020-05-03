@@ -22,10 +22,10 @@ module.exports = {
       "/settings": { page: "/settings" },
       "/blogs": { page: "/blogs" },
 
-      "/blog/[bid]": {
-        page: "/blog/[bid]",
-        query: {}
-      },
+      // "/blog/[bid]": {
+      //   page: "/blog/[bid]",
+      //   query: {}
+      // },
 
       "/blog/action/[action]": {
         page: "/blog/action/[action]",
