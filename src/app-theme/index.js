@@ -12,10 +12,10 @@ export const DARK_THEME = createMuiTheme({
     useNextVariants: true
   },
   palette: {
-    // type: "dark",
+    type: "dark",
     primary,
     secondary,
-    background,
+    // background,
     transparent
   },
   shape: {
