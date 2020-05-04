@@ -3,7 +3,7 @@ import { Button, Grid, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SaveIcon from "@material-ui/icons/Save";
 import { Header, Container } from "@/components";
-import useBlogState from "@/state/useBlogState";
+import useBlog from "@/state/useBlog";
 
 /* page components */
 
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function CreateBlog({ action, blogId, error, blog }) {
   const classes = useStyles();
-  const blogProps = useBlogState({ action, blogId, error, blog });
+  const blogProps = useBlog({ action, blogId, error, blog });
   const { categories } = Constants();
 
   return (

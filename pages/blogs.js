@@ -1,19 +1,20 @@
-import React, { useContext } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 
-import { Header, Overlay, Container } from "@/components";
-import useBlogState from "@/state/useBlogState";
+/* state */
+import useBlog from "@/state/useBlog";
 
 /* page components */
 import CustomTabs from "@/components/Tabs/CustomTabs";
 import BlogCard from "@/components/Cards/BlogCard";
-
-import Error from "@/components/FeedBack/Error";
-/* constants */
-
-import { Constants } from "@/constants/Blog";
+import { Header, Container, Message } from "@/components";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
+/* constants */
+import { Constants } from "@/constants/Blog";
+
+/* api-calls */
+import { getAllBlogsWithSlug } from "@/lib/api";
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -24,17 +25,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function BlogPage() {
+function BlogPage({ blogs, error }) {
   const classes = useStyles();
   const { tabs, featured } = Constants();
-  const {
-    blogsFetchError,
-    isLoadingBlogs,
-    blogs,
-    handleThumbnailClick,
-    handleTabClick,
-    userInput
-  } = useBlogState({ action: "getAll" });
+  const { handleThumbnailClick, handleTabClick, userInput } = useBlog({
+    error
+  });
 
   const blogProps = {
     tabs,
@@ -99,10 +95,39 @@ export default function BlogPage() {
 
           <br />
           {/* loading overlay */}
-          <Overlay overlayText="Loading Blogs..." isVisible={isLoadingBlogs} />
-          {blogsFetchError && <Error userInput={userInput} />}
+          <Message
+            type="error"
+            message={userInput.error}
+            show={userInput.error}
+          />
         </Container>
       </div>
     </DefaultLayout>
   );
 }
+/**
+ *
+ *
+ * configure page to be statically generated
+ *
+ *
+ */
+BlogPage.hasStaticProps = true;
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  const res = await getAllBlogsWithSlug();
+  if (res.error) return { props: { ...res } };
+
+  const blogs = res;
+
+  // By returning { props: blogs }, the Blog component
+  // will receive `blogs` as a prop at build time
+  return {
+    props: {
+      blogs
+    }
+  };
+}
+
+export default BlogPage;

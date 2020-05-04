@@ -1,6 +1,6 @@
 import React from "react";
 import MaterialTable from "material-table";
-import useBlogState from "@/state/useBlogState";
+import useBlog from "@/state/useBlog";
 import DeleteDialog from "@/components/Dialog/DeleteDialog";
 
 import { formatDistanceToNow } from "date-fns";
@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 export default function BlogsTable() {
   const router = useRouter();
   const [blogId, setblogId] = React.useState(null);
-  const blogProps = useBlogState({ action: "delete", blogId, trigger: true });
+  const blogProps = useBlog({ action: "delete", blogId, trigger: true });
 
   /* table actions */
   const actions = [

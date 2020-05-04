@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { setisLoginDialogOpen } from "@/actions/redux-actions";
 
-const useBlogState = ({ action, blogId, trigger, error, blog }) => {
+const useBlog = ({ action, blogId, trigger, error, blog }) => {
   const { user, member } = useSelector(state => state.user);
   let router = useRouter();
   const dispatch = useDispatch();
@@ -125,7 +125,7 @@ const useBlogState = ({ action, blogId, trigger, error, blog }) => {
     if (error) {
       setUserInput({
         error:
-          "Oops! something went wrong either blog does not exist or poor internet connection"
+          "Oops! something went wrong either blog/blogs does not exist or poor internet connection"
       });
     }
   }, [error]);
@@ -340,4 +340,4 @@ const useBlogState = ({ action, blogId, trigger, error, blog }) => {
   };
 };
 
-export default useBlogState;
+export default useBlog;

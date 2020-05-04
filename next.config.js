@@ -5,41 +5,41 @@ module.exports = {
   webpack(config, options) {
     config.resolve.alias["@"] = path.join(__dirname, "src/");
     return config;
-  },
+  }
 
   // devIndicators: {
   //   autoPrerender: false
   // }
 
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      "/": { page: "/" },
-      "/contact": { page: "/contact" },
-      "/about": { page: "/about" },
-      "/settings": { page: "/settings" },
-      "/blogs": { page: "/blogs" },
+  // exportPathMap: async function (
+  //   defaultPathMap,
+  //   { dev, dir, outDir, distDir, buildId }
+  // ) {
+  //   return {
+  //     "/": { page: "/" },
+  //     "/contact": { page: "/contact" },
+  //     "/about": { page: "/about" },
+  //     "/settings": { page: "/settings" },
+  //     "/blogs": { page: "/blogs" },
 
-      // "/blog/[bid]": {
-      //   page: "/blog/[bid]",
-      //   query: {}
-      // },
+  //     // "/blog/[bid]": {
+  //     //   page: "/blog/[bid]",
+  //     //   query: {}
+  //     // },
 
-      "/blog/action/[action]": {
-        page: "/blog/action/[action]",
-        query: {}
-      },
+  //     "/blog/action/[action]": {
+  //       page: "/blog/action/[action]",
+  //       query: {}
+  //     },
 
-      "/membership/[action]": {
-        page: "/membership/[action]",
-        query: {}
-      },
-      "/profile/[userId]": {
-        page: "/profile/[userId]",
-        query: {}
-      }
-    };
-  }
+  //     "/membership/[action]": {
+  //       page: "/membership/[action]",
+  //       query: {}
+  //     },
+  //     "/profile/[userId]": {
+  //       page: "/profile/[userId]",
+  //       query: {}
+  //     }
+  //   };
+  // }
 };
