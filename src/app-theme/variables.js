@@ -11,7 +11,7 @@ export const white = {
 };
 
 export const background = {
-  default: theme.palette.grey[200]
+  default: "#121723"
 };
 
 export const shade = {

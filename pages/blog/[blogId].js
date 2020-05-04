@@ -12,7 +12,7 @@ import { AuthorCard } from "@/components/Cards/AuthorCard";
 import useBlogComments from "@/state/useBlogComments";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 
-import { getAllBlogsWithSlug, getBlogAndMoreBlogs } from "@/lib/api";
+import { getAllBlogs, getBlogAndMoreBlogs } from "@/lib/api";
 import { BlogTags } from "@/components/HeadTags/BlogTags";
 
 const useStyles = makeStyles(theme => ({

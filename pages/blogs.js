@@ -14,7 +14,7 @@ import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 import { Constants } from "@/constants/Blog";
 
 /* api-calls */
-import { getAllBlogsWithSlug } from "@/lib/api";
+import { getAllBlogs } from "@/lib/api";
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -105,29 +105,15 @@ function BlogPage({ blogs, error }) {
     </DefaultLayout>
   );
 }
-/**
- *
- *
- * configure page to be statically generated
- *
- *
- */
-BlogPage.hasStaticProps = true;
 
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  const res = await getAllBlogsWithSlug();
-  if (res.error) return { props: { ...res } };
+BlogPage.getInitialProps = async ({ query }) => {
+  const res = await getAllBlogs();
 
-  const blogs = res;
+  if (res.error) return { ...res, ...query };
 
-  // By returning { props: blogs }, the Blog component
-  // will receive `blogs` as a prop at build time
-  return {
-    props: {
-      blogs
-    }
-  };
-}
+  const blogs = res[0];
+
+  return { ...query, blogs };
+};
 
 export default BlogPage;

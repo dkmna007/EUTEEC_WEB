@@ -36,7 +36,7 @@ export const getBlogAndMoreBlogs = async slug =>
 export const getBlog = async slug =>
   fetchWithErrorHandling(`${API_BASE_URL}/api/blogs/${slug}`);
 
-export const getAllBlogsWithSlug = async () =>
+export const getAllBlogs = async () =>
   fetchWithErrorHandling(API_BLOGS_GET_ALL);
 
 /**
