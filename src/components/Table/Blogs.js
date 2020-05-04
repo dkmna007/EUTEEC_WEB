@@ -17,8 +17,8 @@ export default function BlogsTable() {
       tooltip: "Edit Blog",
       onClick: (event, rowData) => {
         router.push(
-          ` /blog/action/[action]?blogId=${rowData._id}`,
-          `/blog/action/update?blogId=${rowData._id}`
+          ` /my-blogs-dashboard/[action]?blogId=${rowData._id}`,
+          `/my-blogs-dashboard/update?blogId=${rowData._id}`
         );
       }
     },

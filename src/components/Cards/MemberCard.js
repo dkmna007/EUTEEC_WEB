@@ -16,7 +16,7 @@ export default function MemberCard({ profiler }) {
         src={profiler.userAvator}
         title="member"
       />
-      <Link href={`/profile/${profiler.userId}`}>
+      <Link href={"/profile/[userId]"} as={`/profile/${profiler.userId}`}>
         <Button
           size="small"
           color="primary"

@@ -4,14 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import SMediaPlayer from "switch-media-player";
 /* page components */
 
-import {
-  Header,
-  Overlay,
-  Container,
-  Comments,
-  Message,
-  MarkDown
-} from "@/components";
+import { Header, Container, Comments, Message, MarkDown } from "@/components";
 import BlogActionBar from "@/components/BlogActionBar";
 import { AuthorCard } from "@/components/Cards/AuthorCard";
 // import ClapButton from "../Components/Clap/ClapButton";
@@ -96,38 +89,11 @@ export default function Blog({ blog, error, bid }) {
     </DefaultLayout>
   );
 }
-/**
- *
- *
- * configure page to be statically generated
- *
- *
- */
 
-Blog.hasStaticProps = true;
-// This function gets called at build time
-export async function getStaticPaths() {
-  // Call an external API endpoint to get blogs
-  // Call an external API endpoint to get blogs.
-  const res = await getAllBlogsWithSlug();
-  // if (res.error) return { props: { ...res } };
-  const blogs = res;
-  // Get the paths we want to pre-render based on blogs
-  const paths = blogs.map(blog => `/blog/${blog._id}`);
+Blog.getInitialProps = async ({ query }) => {
+  const res = await getBlogAndMoreBlogs(query.bid);
+  if (res.error) return { ...res, ...query };
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { paths, fallback: false };
-}
-
-// This also gets called at build time
-export async function getStaticProps({ params }) {
-  // params contains the blog `id`.
-  // If the route is like /blogs/1, then params.id is 1
-
-  const res = await getBlogAndMoreBlogs(params.bid);
   const blog = res;
-
-  // Pass blog data to the page via props
-  return { props: { blog, ...params } };
-}
+  return { ...query, blog };
+};
