@@ -10,36 +10,5 @@ module.exports = {
   // devIndicators: {
   //   autoPrerender: false
   // },
-
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      "/": { page: "/" },
-      "/contact": { page: "/contact" },
-      "/about": { page: "/about" },
-      "/settings": { page: "/settings" },
-      "/blogs": { page: "/blogs" },
-
-      // "/blog/[blogId]": {
-      //   page: "/blog/[blogId]",
-      //   query: {}
-      // },
-
-      "/blog/action/[action]": {
-        page: "/blog/action/[action]",
-        query: {}
-      },
-
-      "/membership/[action]": {
-        page: "/membership/[action]",
-        query: {}
-      },
-      "/profile/[userId]": {
-        page: "/profile/[userId]",
-        query: {}
-      }
-    };
-  }
+  exportPathMap: () => ({})
 };
