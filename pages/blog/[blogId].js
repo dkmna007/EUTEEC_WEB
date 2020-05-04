@@ -91,7 +91,7 @@ export default function Blog({ blog, error, blogId }) {
 }
 
 Blog.getInitialProps = async ({ query }) => {
-  const res = await getBlogAndMoreBlogs(query.blogId);
+  const res = await getBlogAndMoreBlogs(query.blogId || "");
   if (res.error) return { ...res, ...query };
 
   const blog = res;
