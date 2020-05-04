@@ -22,8 +22,8 @@ module.exports = {
   //     "/settings": { page: "/settings" },
   //     "/blogs": { page: "/blogs" },
 
-  //     // "/blog/[bid]": {
-  //     //   page: "/blog/[bid]",
+  //     // "/blog/[blogId]": {
+  //     //   page: "/blog/[blogId]",
   //     //   query: {}
   //     // },
 

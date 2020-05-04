@@ -231,7 +231,7 @@ const useBlog = ({ action, blogId, trigger, error, blog }) => {
   };
 
   const handleThumbnailClick = blog => () => {
-    router.push("/blog/[bid]", `/blog/${blog._id}`);
+    router.push("/blog/[blogId]", `/blog/${blog._id}`);
   };
 
   const handleTabClick = name => () => {
@@ -274,7 +274,7 @@ const useBlog = ({ action, blogId, trigger, error, blog }) => {
   };
 
   const viewCreatedBlog = () => {
-    router.push("/blog/[bid]", `/blog/${response._id}`);
+    router.push("/blog/[blogId]", `/blog/${response._id}`);
   };
   const handleOpenLoginDialog = () => {
     dispatch(setisLoginDialogOpen(true));

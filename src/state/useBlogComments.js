@@ -2,7 +2,7 @@ import React from "react";
 import { useAxios } from "./useFetch/useAxios";
 import { useSelector } from "react-redux";
 import { API_COMMENTS_GET, API_COMMENT_POST } from "@/api/comments";
-const useBlogComments = ({ bid }) => {
+const useBlogComments = ({ blogId }) => {
   const { user } = useSelector(state => state.user);
 
   const [userInput, setUserInput] = React.useReducer(
@@ -26,7 +26,7 @@ const useBlogComments = ({ bid }) => {
     error,
     isLoading,
     response: comments
-  } = useAxios("get", API_COMMENTS_GET(bid && bid));
+  } = useAxios("get", API_COMMENTS_GET(blogId && blogId));
 
   /* perform comments post/put */
   const {
@@ -34,15 +34,15 @@ const useBlogComments = ({ bid }) => {
     error: commentPostError,
     isLoading: isCommentPostLoading,
     response: commentPostResponse
-  } = useAxios("put", API_COMMENT_POST(bid && bid));
+  } = useAxios("put", API_COMMENT_POST(blogId && blogId));
 
   /* post/put comments effect */
 
   React.useEffect(() => {
-    if (bid) {
+    if (blogId) {
       getComments();
     }
-  }, [bid]);
+  }, [blogId]);
 
   React.useEffect(() => {
     if (commentPostResponse) {

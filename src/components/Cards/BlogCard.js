@@ -91,7 +91,7 @@ export default function BlogCard(props) {
         {blog.category === "Featured" && (
           <p class="jss594"> {truncateString(blog.content, 120)}</p>
         )}
-        <Link href="/blog/[bid]" as={`/blog/${blog._id}`}>
+        <Link href="/blog/[blogId]" as={`/blog/${blog._id}`}>
           <Button
             variant="contained"
             color="primary"

@@ -67,8 +67,8 @@ function ProfilePage({ userId, error, member }) {
               onClick={() => {
                 profileProps.canEditProfile
                   ? router.push(
-                      `/membership/[action]?userId=${userId}`,
-                      `/membership/update?userId=${userId}`
+                      `/my-membership-dashboard/[action]?userId=${userId}`,
+                      `/my-membership-dashboard/update?userId=${userId}`
                     )
                   : profileProps.handleOpenloginDialog;
               }}

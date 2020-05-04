@@ -64,8 +64,8 @@ export default function Settings() {
                     handleClick={() => {
                       user
                         ? router.push(
-                            `/membership/[action]?userId=${user.uid}`,
-                            `/membership/join?userId=${user.uid}`
+                            `/my-membership-dashboard/[action]?userId=${user.uid}`,
+                            `/my-membership-dashboard/join?userId=${user.uid}`
                           )
                         : dispatch(setisLoginDialogOpen(true));
                     }}

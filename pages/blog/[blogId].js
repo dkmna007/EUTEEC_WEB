@@ -32,10 +32,10 @@ const useStyles = makeStyles(theme => ({
   mediaCaption: { position: "relative" }
 }));
 
-export default function Blog({ blog, error, bid }) {
+export default function Blog({ blog, error, blogId }) {
   const classes = useStyles();
 
-  const commentState = useBlogComments({ bid });
+  const commentState = useBlogComments({ blogId });
 
   return (
     <DefaultLayout /* menuProps={menuProps} */>
@@ -91,7 +91,7 @@ export default function Blog({ blog, error, bid }) {
 }
 
 Blog.getInitialProps = async ({ query }) => {
-  const res = await getBlogAndMoreBlogs(query.bid);
+  const res = await getBlogAndMoreBlogs(query.blogId);
   if (res.error) return { ...res, ...query };
 
   const blog = res;

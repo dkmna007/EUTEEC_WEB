@@ -26,7 +26,7 @@ export default function BlogsTable() {
       icon: "visibility",
       tooltip: "View Blog",
       onClick: (event, rowData) => {
-        router.push("/blog/[bid]", `/blog/${rowData._id}`);
+        router.push("/blog/[blogId]", `/blog/${rowData._id}`);
       }
     },
     {
