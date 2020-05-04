@@ -4,7 +4,6 @@ import { Grid, Typography, Divider } from "@material-ui/core";
 
 /* page components */
 import { LinkCard, ProjectCard, Container, CarouselAuto } from "@/components";
-
 import { ListCard as Specialisation } from "@/components/Cards/ListCard";
 import { ListCard as Activities } from "@/components/Cards/ListCard";
 
