@@ -111,7 +111,7 @@ BlogPage.getInitialProps = async ({ query }) => {
 
   if (res.error) return { ...res, ...query };
 
-  const blogs = res[0];
+  const blogs = res;
 
   return { ...query, blogs };
 };

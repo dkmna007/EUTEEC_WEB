@@ -5,10 +5,9 @@ module.exports = {
   webpack(config, options) {
     config.resolve.alias["@"] = path.join(__dirname, "src/");
     return config;
-  },
+  }
 
   // devIndicators: {
   //   autoPrerender: false
   // },
-  exportPathMap: () => ({})
 };
