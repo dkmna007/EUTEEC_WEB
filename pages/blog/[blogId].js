@@ -70,7 +70,7 @@ export default function Blog({ blog, error, blogId }) {
                 </Paper>
                 <br /> <br />
                 {/* blog content */}
-                <MarkDown blog={blog} />
+                <MarkDown {...blog} />
                 {/* author  */}
                 <AuthorCard author={author} />
                 <Comments {...commentState} />

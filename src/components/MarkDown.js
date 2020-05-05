@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const MarkDown = ({ blog }) => {
+export const MarkDown = ({ content, author, createdAt }) => {
   const classes = useStyles();
   marked.setOptions({
     baseUrl: null,
@@ -35,7 +35,7 @@ export const MarkDown = ({ blog }) => {
     smartypants: false,
     xhtml: false
   });
-  const html = marked(blog.content || "");
+  const html = marked(content || "");
   return (
     <>
       <Typography
@@ -45,13 +45,12 @@ export const MarkDown = ({ blog }) => {
         variant="inherit"
         color="primary"
       >
-        {blog &&
-          `By  ${blog.authorName}  ${formatDistanceToNow(
-            new Date(blog.createdAt),
-            {
-              addSuffix: true
-            }
-          )}`}
+        {`By  ${author && author.name}  ${formatDistanceToNow(
+          new Date(createdAt),
+          {
+            addSuffix: true
+          }
+        )}`}
       </Typography>
 
       <Divider />
