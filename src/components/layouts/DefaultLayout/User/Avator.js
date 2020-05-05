@@ -15,7 +15,7 @@ export const useAvatorStyles = makeStyles(theme => ({
     width: 30,
     height: 30,
     borderStyle: "solid",
-    borderColor: theme.palette.primary.main,
+    borderColor: theme.palette.secondary.main,
     borderWidth: 1.5
   }
 }));

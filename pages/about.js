@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
   subT: {
     fontFamily: '"Roboto Slab", "Times New Roman", serif',
     fontWeight: "700",
-    lineHeight: "1.5em"
+    lineHeight: "1.5em",
+    color: theme.palette.secondary.main
     // textAlign: "center",
   },
   underline: {
@@ -36,7 +37,10 @@ const useStyles = makeStyles(theme => ({
   logo: {
     height: 90,
     width: 90,
-    float: "right"
+    float: "right",
+    background: "white",
+    border: "solid 1px green",
+    borderRadius: "50%"
   },
   subheading: {
     color: theme.palette.primary.dark
@@ -103,7 +107,7 @@ const About = ({ team, error }) => {
                 color="primary"
                 align="center"
                 variant="h5"
-                className={(classes.subT, classes.subheading)}
+                className={classes.subT}
               >
                 {staticAbout.subtitle2}
               </Typography>

@@ -11,6 +11,7 @@ import { useAxios } from "./useFetch/useAxios";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { setisLoginDialogOpen } from "@/actions/redux-actions";
+import { objectToFormData } from "object-to-formdata";
 
 const useBlog = ({ action, blogId, trigger, error, blog }) => {
   const { user, member } = useSelector(state => state.user);
@@ -41,7 +42,6 @@ const useBlog = ({ action, blogId, trigger, error, blog }) => {
 
   const progress = false;
 
-  console.log(userInput);
   /* check if action is create or update  */
   const query = (action => {
     switch (action) {
@@ -85,7 +85,7 @@ const useBlog = ({ action, blogId, trigger, error, blog }) => {
     isLoading: isBlogPostPutLoading,
     uploadingPercentage,
     response
-  } = useAxios(query.method, query.url);
+  } = useAxios(query.method, "http://localhost:8080/api/blogs/add");
 
   /* perfom blog delete */
   const {
@@ -262,11 +262,8 @@ const useBlog = ({ action, blogId, trigger, error, blog }) => {
   };
 
   const handleBlogSave = () => {
-    var blogFormData = new FormData();
-    for (var key in userInput) {
-      blogFormData.append(key, userInput[key]);
-    }
-    // console.log(userInput);
+    var blogFormData = objectToFormData(userInput);
+
     CheckRequiedFields() ? postBlog(blogFormData) : null;
   };
 
