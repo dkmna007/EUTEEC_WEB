@@ -7,7 +7,9 @@ const useStyles = makeStyles(theme => ({
   heading: {
     textTransform: "capitalize"
   },
-
+  salutation: {
+    color: theme.palette.primary.dark
+  },
   mediaDetails: {
     padding: 5
     // outlineStyle: "solid",
@@ -43,7 +45,7 @@ export const MarkDown = ({ content, author, createdAt }) => {
         align="center"
         gutterBottom
         variant="inherit"
-        color="primary"
+        className={classes.salutation}
       >
         {`By  ${author && author.name}  ${formatDistanceToNow(
           new Date(createdAt),
@@ -54,17 +56,13 @@ export const MarkDown = ({ content, author, createdAt }) => {
       </Typography>
 
       <Divider />
-      {/* <Paper variant="outlined" className={classes.mediaDetails}> */}
 
-      {/* <Typography variant="inherit" component="p"> */}
       <br />
       <div
         dangerouslySetInnerHTML={{
           __html: `<div style="overflow: hidden;">${html}</div>`
         }}
       />
-      {/* </Typography> */}
-      {/* </Paper> */}
     </>
   );
 };

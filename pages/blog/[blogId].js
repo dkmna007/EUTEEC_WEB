@@ -53,7 +53,11 @@ export default function Blog({ blog, error, blogId }) {
           {blog && (
             <Grid container justify="space-evenly" spacing={1}>
               <Grid item md={6} sm={6} xs={12}>
-                {/* show  media  */}
+                {/**
+                 *
+                 * media-player container
+                 *
+                 */}
                 <Paper
                   style={{
                     backgroundImage: `url("/assets/images/placeholder.jpg")`,
@@ -62,24 +66,53 @@ export default function Blog({ blog, error, blogId }) {
                     backgroundSize: "cover"
                   }}
                 >
-                  {/* custom media player */}
+                  {/**
+                   *
+                   *
+                   * custom media player//supports youtube urls,picture and so much more
+                   *
+                   *
+                   */}
                   <SMediaPlayer mediaUrl={blog.mediaUrl} />
 
-                  {/* share */}
+                  {/**
+                   *
+                   * social/content sharing section
+                   *
+                   *
+                   */}
                   <BlogActionBar blog={blog} />
                 </Paper>
                 <br /> <br />
-                {/* blog content */}
+                {/**
+                 *
+                 * blog content section
+                 *
+                 */}
                 <MarkDown {...blog} />
-                {/* author  */}
+                {/**
+                 *
+                 * author section
+                 *
+                 *
+                 */}
                 <AuthorCard author={author} />
+                {/**
+                 *
+                 *
+                 * comments section
+                 *
+                 *
+                 */}
                 <Comments {...commentState} />
               </Grid>
-
+              {/**
+               * applouse
+               */}
               {/* <ClapButton onCountChange={onCountChange} /> */}
             </Grid>
           )}
-        </Container>{" "}
+        </Container>
         <Message
           message={"Ooops!! something went wrong"}
           show={error}
