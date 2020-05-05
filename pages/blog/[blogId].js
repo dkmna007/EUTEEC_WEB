@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Blog({ blog, error, blogId }) {
   const classes = useStyles();
-
+  const { author } = blog;
   const commentState = useBlogComments({ blogId });
 
   return (
@@ -72,7 +72,7 @@ export default function Blog({ blog, error, blogId }) {
                 {/* blog content */}
                 <MarkDown blog={blog} />
                 {/* author  */}
-                <AuthorCard author={{ ...blog }} />
+                <AuthorCard author={author} />
                 <Comments {...commentState} />
               </Grid>
 
