@@ -41,6 +41,7 @@ const useBlog = ({ action, blogId, trigger, error, blog }) => {
 
   const progress = false;
 
+  console.log(userInput);
   /* check if action is create or update  */
   const query = (action => {
     switch (action) {

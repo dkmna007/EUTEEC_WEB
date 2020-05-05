@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { providers, firebaseAppAuth } from "../firebase/index";
-import { userInfo } from "../actions/redux-actions";
+import { userInfo, memberInfo } from "../actions/redux-actions";
 
 const useAuthentication = () => {
   const googleProvider = providers.googleProvider;
@@ -8,10 +8,9 @@ const useAuthentication = () => {
 
   const dispatch = useDispatch();
   const signIn = provider => {
-    firebaseAppAuth.signInWithRedirect(provider);
-
+    dispatch({ type: "IS_USER_LOADING", isUserLoading: true });
     firebaseAppAuth
-      .getRedirectResult()
+      .signInWithPopup(provider)
       .then(function (result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         // var token = result.credential.accessToken;
@@ -21,38 +20,26 @@ const useAuthentication = () => {
 
         if (user) {
           dispatch(userInfo(user));
+          dispatch({ type: "IS_USER_LOADING", isUserLoading: false });
+          dispatch({ type: "IS_LOGIN_DIALOG_OPEN", isLoginDialogOpen: false });
+          dispatch({ type: "ERROR", error: false });
         }
       })
       .catch(function (error) {
+        dispatch({ type: "IS_USER_LOADING", isUserLoading: false });
+
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
+
         // The email of the user's account used.
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        // ...
-      });
-  };
-  const completeDialogSignIn = () => {
-    firebaseAppAuth
-      .getRedirectResult()
-      .then(function (result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        // var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        // store user to redux store
-        user && dispatch(userInfo(user));
-      })
-      .catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
+        dispatch({
+          type: "ERROR",
+          error: "please check your internet connection and try again"
+        });
         // ...
       });
   };
@@ -80,8 +67,7 @@ const useAuthentication = () => {
   return {
     signInWithGoogle,
     signOut,
-    signInWithfacebook,
-    completeDialogSignIn
+    signInWithfacebook
   };
 };
 export default useAuthentication;

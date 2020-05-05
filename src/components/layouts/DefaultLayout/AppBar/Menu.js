@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-// import UserAvatar from "../User/Avator";
-import { AccountCircle } from "@material-ui/icons";
+import UserAvatar from "../User/Avator";
+// import { AccountCircle } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Paper,
@@ -71,7 +71,7 @@ export default function LogoutMenu(props) {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          <AccountCircle />
+          <UserAvatar size="small" />
         </IconButton>
         <Popper
           open={open}

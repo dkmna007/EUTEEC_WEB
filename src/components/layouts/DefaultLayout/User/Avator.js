@@ -10,6 +10,13 @@ export const useAvatorStyles = makeStyles(theme => ({
     borderStyle: "solid",
     borderColor: theme.palette.primary.main,
     borderWidth: 1.5
+  },
+  smallAvator: {
+    width: 30,
+    height: 30,
+    borderStyle: "solid",
+    borderColor: theme.palette.primary.main,
+    borderWidth: 1.5
   }
 }));
 export default function UserAvatar({ size }) {
@@ -19,9 +26,9 @@ export default function UserAvatar({ size }) {
   return (
     <React.Fragment>
       <Avatar
-        alt="Remy Sharp"
+        alt="user avator"
         src={user && user.photoURL}
-        className={size ? null : classes.bigAvatar}
+        className={size ? classes.smallAvator : classes.bigAvatar}
       />
     </React.Fragment>
   );

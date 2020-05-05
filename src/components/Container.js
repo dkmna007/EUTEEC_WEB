@@ -3,7 +3,10 @@ import { Paper, Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import EditIcon from "@material-ui/icons/Edit";
+import { CustomTooltip } from "./DataDisplay/Customtooltip";
+import { useSelector } from "react-redux";
 export const Container = props => {
+  const { member } = useSelector(state => state.user);
   const useStyles = makeStyles(theme => ({
     content: {
       // color: "green",
@@ -32,22 +35,34 @@ export const Container = props => {
   const { children, type } = props;
   const router = useRouter();
 
+  const [isTooltipOpen, setTooltipOpen] = React.useState(false);
+  const handleToggle = () => {
+    if (isTooltipOpen) {
+      setTooltipOpen(false);
+    } else {
+      setTooltipOpen(true);
+    }
+  };
   return (
     <Paper elevation={props.elevation} className={classes.content}>
       {type && (
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.actionButton}
-          onClick={() =>
-            router.push(
-              "/my-blogs-dashboard/[action]?blogId=new",
-              "/my-blogs-dashboard/create?blogId=new"
-            )
-          }
-        >
-          <EditIcon />
-        </Button>
+        <CustomTooltip open={member ? false : isTooltipOpen}>
+          <Button
+            variant="contained"
+            color="secondary"
+            className={classes.actionButton}
+            onClick={() => {
+              handleToggle();
+              member &&
+                router.push(
+                  "/my-blogs-dashboard/[action]?blogId=new",
+                  "/my-blogs-dashboard/create?blogId=new"
+                );
+            }}
+          >
+            <EditIcon />
+          </Button>
+        </CustomTooltip>
       )}
       {children}
     </Paper>

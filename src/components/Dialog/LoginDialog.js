@@ -4,8 +4,9 @@ import { Grid, Typography, IconButton } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { DialogContent, Button, DialogActions } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import { setisLoginDialogOpen } from "@/actions/redux-actions";
+import { setisLoginDialogOpen, memberInfo } from "@/actions/redux-actions";
 import useAuthentication from "@/state/useAuthentication";
+import { getMember } from "@/lib/api";
 
 const useAuthStyles = makeStyles(theme => ({
   dialog: {
@@ -50,19 +51,29 @@ const StyledLoginIconButton = withStyles({
 
 export const LoginDialog = () => {
   const classes = useAuthStyles();
-  const {
-    signInWithGoogle,
-    signInWithfacebook,
-    completeDialogSignIn
-  } = useAuthentication();
+  const { signInWithGoogle, signInWithfacebook } = useAuthentication();
 
-  const { isLoginDialogOpen, user } = useSelector(state => state.user);
+  const { isLoginDialogOpen, user, error, isUserLoading } = useSelector(
+    state => state.user
+  );
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    if (user) {
-      dispatch(setisLoginDialogOpen(false));
+
+  const getMemberFromStore = async user => {
+    const res = await getMember(user.uid);
+    if (res.error) {
+      // dispatch({ type: "ERROR", error: true });
     }
-    completeDialogSignIn();
+    const member = res[0];
+
+    // store member to redux store
+    member && dispatch(memberInfo(member));
+  };
+
+  React.useEffect(() => {
+    if (user && !error) {
+      // check isf user is a member and dispatch to state
+      getMemberFromStore(user);
+    }
   }, [user]);
 
   return (
@@ -87,6 +98,7 @@ export const LoginDialog = () => {
           <Typography align="center">How do you like to login?</Typography>
           <Grid container item xs={12} justify="space-evenly">
             <StyledLoginIconButton
+              // disabled={isUserLoading}
               onClick={() => {
                 signInWithGoogle();
               }}
@@ -94,6 +106,7 @@ export const LoginDialog = () => {
               <img src="/assets/images/google.png" className={classes.logo_1} />
             </StyledLoginIconButton>
             <StyledLoginIconButton
+              // disabled={isUserLoading}
               onClick={() => {
                 signInWithfacebook();
               }}
@@ -107,9 +120,14 @@ export const LoginDialog = () => {
             size="/large"
             color="inherit"
             style={{ margin: "auto" }}
+            disabled={isUserLoading}
             onClick={() => dispatch(setisLoginDialogOpen(false))}
           >
-            continue without login
+            {isUserLoading
+              ? "authenticating user..."
+              : error
+              ? error
+              : "continue without login?"}
           </Button>
         </DialogActions>
       </Dialog>

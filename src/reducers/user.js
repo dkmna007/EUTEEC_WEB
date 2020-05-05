@@ -1,8 +1,16 @@
-import { USER_INFO, MEMBER_INFO, IS_LOGIN_DIALOG_OPEN } from "../constants";
+import {
+  USER_INFO,
+  MEMBER_INFO,
+  IS_LOGIN_DIALOG_OPEN,
+  IS_USER_LOADING,
+  ERROR
+} from "../constants";
 
 const initialState = {
   member: null,
   user: null,
+  error: false,
+  isUserLoading: false,
   isLoginDialogOpen: true
 };
 
@@ -23,6 +31,16 @@ function user(state = initialState, action) {
       return {
         ...state,
         isLoginDialogOpen: action.isLoginDialogOpen
+      };
+    case IS_USER_LOADING:
+      return {
+        ...state,
+        isUserLoading: action.isUserLoading
+      };
+    case ERROR:
+      return {
+        ...state,
+        error: action.error
       };
 
     default:
