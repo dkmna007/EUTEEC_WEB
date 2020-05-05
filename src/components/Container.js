@@ -3,7 +3,7 @@ import { Paper, Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import EditIcon from "@material-ui/icons/Edit";
-import { CustomTooltip } from "./DataDisplay/Customtooltip";
+import { CustomTooltip } from "./DataDisplay/CustomTooltip";
 import { useSelector } from "react-redux";
 export const Container = props => {
   const { member } = useSelector(state => state.user);
