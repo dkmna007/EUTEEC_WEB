@@ -86,7 +86,7 @@ function BlogPage({ blogs, error }) {
                   (userInput.activeTab === blog.category ||
                     userInput.activeTab === "All") && (
                     <Grid item sm={6} md={6} xs={12}>
-                      <BlogCard key={blog.title} blog={blog} {...blogProps} />
+                      <BlogCard key={blog.title} {...blog} />
                     </Grid>
                   )
                 );
@@ -94,7 +94,7 @@ function BlogPage({ blogs, error }) {
           </Grid>
 
           <br />
-          {/* loading overlay */}
+          {/* error message */}
           <Message
             type="error"
             message={userInput.error}

@@ -5,8 +5,15 @@ import { truncateString, toThumbnail } from "@/utils";
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 
-export default function BlogCard(props) {
-  const { blog, handleThumbnailClick } = props;
+export default function BlogCard({
+  createdAt,
+  author,
+  title,
+  _id,
+  category,
+  content,
+  mediaUrl
+}) {
   const useStyles = makeStyles(theme => ({
     card: {
       width: "100%",
@@ -15,18 +22,14 @@ export default function BlogCard(props) {
       backgroundPosition: "50%",
       backgroundSize: "cover",
       borderRadius: 5,
-      backgroundColor: !blog.mediaUrl && `black`,
+      backgroundColor: !mediaUrl && `black`,
       backgroundImage: `
       linear-gradient(
           rgba(0, 0, 0, 0.5),
           rgba(0, 0, 0, 0)
         ), 
           
-          url(${
-            blog.category === "Featured"
-              ? blog.mediaUrl
-              : toThumbnail(blog.mediaUrl)
-          })`,
+          url(${category === "Featured" ? mediaUrl : toThumbnail(mediaUrl)})`,
       boxShadow:
         " 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
     },
@@ -72,26 +75,26 @@ export default function BlogCard(props) {
         avatar={
           <Avatar
             aria-label="euteec"
-            src={blog.authorAvator}
+            src={author && author.avator}
             className={classes.avatar}
           />
         }
         action={
           <IconButton aria-label="settings">{/* <MoreVert /> */}</IconButton>
         }
-        title={blog.authorName}
-        subheader={formatDistanceToNow(new Date(blog.createdAt), {
+        title={author && author.name}
+        subheader={formatDistanceToNow(new Date(createdAt), {
           addSuffix: true
         })}
       />
       {/*  */}
       <div className={classes.cardContent}>
-        <h6 style={{ textTransform: "uppercase" }}>{blog.category}</h6>
-        <h3 style={{ textTransform: "capitalize" }}>{blog.title}</h3>
-        {blog.category === "Featured" && (
-          <p class="jss594"> {truncateString(blog.content, 120)}</p>
+        <h6 style={{ textTransform: "uppercase" }}>{category}</h6>
+        <h3 style={{ textTransform: "capitalize" }}>{title}</h3>
+        {category === "Featured" && (
+          <p class="jss594"> {truncateString(content, 120)}</p>
         )}
-        <Link href="/blog/[blogId]" as={`/blog/${blog._id}`}>
+        <Link href="/blog/[blogId]" as={`/blog/${_id}`}>
           <Button
             variant="contained"
             color="primary"
