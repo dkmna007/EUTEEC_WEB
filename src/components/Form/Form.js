@@ -95,7 +95,7 @@ const GeneralDetailForm = props => {
             // helperText={!userInput.youtubeUrl ? "required" : null}
             margin="normal"
             id="outlined-multiline-static"
-            label="YoutubeUrl..."
+            label="Youtube or any other media url..."
             variant="outlined"
             InputProps={{
               startAdornment: (
