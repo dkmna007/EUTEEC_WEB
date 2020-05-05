@@ -85,7 +85,7 @@ const useBlog = ({ action, blogId, trigger, error, blog }) => {
     isLoading: isBlogPostPutLoading,
     uploadingPercentage,
     response
-  } = useAxios(query.method, "http://localhost:8080/api/blogs/add");
+  } = useAxios(query.method, query.url);
 
   /* perfom blog delete */
   const {
@@ -139,7 +139,7 @@ const useBlog = ({ action, blogId, trigger, error, blog }) => {
    *
    */
   React.useEffect(() => {
-    if (action === "getAll") {
+    if (action === "getAll" || (member && member.isAdmin)) {
       getAllBlogs();
     }
   }, []);

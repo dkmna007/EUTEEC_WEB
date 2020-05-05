@@ -70,7 +70,7 @@ export default function BlogsTable() {
         style={{ background: "#17141d" }}
         title={""}
         columns={columns}
-        data={blogProps.userBlogs || []}
+        data={blogProps.blogs || blogProps.userBlogs || []}
         options={options}
         actions={actions}
         isLoading={blogProps.isLoadingUserBlogs}
