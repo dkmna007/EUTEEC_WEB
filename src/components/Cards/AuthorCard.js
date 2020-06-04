@@ -5,15 +5,15 @@ import { truncateString } from "@/utils";
 import { makeStyles } from "@material-ui/core/styles";
 import Link from "next/link";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   card: {
     padding: 5,
     position: "relative",
-    marginTop: 20
+    marginTop: 20,
   },
   button: {
     float: `right`,
-    margin: `15px 5px 15px 5px`
+    margin: `15px 5px 15px 5px`,
   },
   name: {
     color: theme.palette.secondary.main,
@@ -22,15 +22,15 @@ const useStyles = makeStyles(theme => ({
     fontFamily: `Roboto Slab", "Times New Roman, serif`,
     fontWeight: 700,
     marginBottom: `0.75rem`,
-    textDecoration: `none`
+    textDecoration: `none`,
   },
   avator: {
     margin: `15px 15px 15px 0px`,
     float: `left`,
     boxShadow: `0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)`,
     height: 80,
-    width: 80
-  }
+    width: 80,
+  },
 }));
 
 export const AuthorCard = ({ author }) => {

@@ -15,26 +15,26 @@ import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 import { getAllBlogs, getBlogAndMoreBlogs } from "@/lib/api";
 import { BlogTags } from "@/components/HeadTags/BlogTags";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
 
   avatar: {
     position: "absolute",
-    maxWidth: 400
+    maxWidth: 400,
   },
   heading: {
-    textTransform: "capitalize"
+    textTransform: "capitalize",
   },
 
   mediabar: {
-    padding: 5
+    padding: 5,
   },
-  mediaCaption: { position: "relative" }
+  mediaCaption: { position: "relative" },
 }));
 
 export default function Blog({ blog, error, blogId }) {
   const classes = useStyles();
-  const { author } = blog;
+  const author = (blog && blog.author) || "";
   const commentState = useBlogComments({ blogId });
 
   return (
@@ -63,7 +63,7 @@ export default function Blog({ blog, error, blogId }) {
                     backgroundImage: `url("/assets/images/placeholder.jpg")`,
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
-                    backgroundSize: "cover"
+                    backgroundSize: "cover",
                   }}
                 >
                   {/**
