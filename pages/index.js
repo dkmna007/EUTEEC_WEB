@@ -4,7 +4,7 @@ import { Grid, Typography, Divider } from "@material-ui/core";
 
 /* page components */
 import { LinkCard, ProjectCard, Container, CarouselAuto } from "@/components";
-import { ListCard as Specialisation } from "@/components/Cards/ListCard";
+import { ListCard as Specialization } from "@/components/Cards/ListCard";
 import { ListCard as Activities } from "@/components/Cards/ListCard";
 
 /* constants */
@@ -12,21 +12,21 @@ import { Constants } from "@/constants/Home";
 import DefaultLayout from "@/components/layouts/DefaultLayout/DefaultLayout";
 import { HomeTags } from "@/components/HeadTags/HomeTags";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   headings: {
     margin: theme.spacing(3, 0),
-    color: "#43a047"
-  }
+    color: "#43a047",
+  },
 }));
 
-const Index = props => {
+const Index = (props) => {
   const classes = useStyles();
   const {
     homepage,
-    specialisation_data,
+    Specialization_data,
     activities_data,
     app_links,
-    projects
+    projects,
   } = Constants();
 
   return (
@@ -67,7 +67,7 @@ const Index = props => {
             background={"rgba(255, 255, 255, 0)"}
           >
             <Grid container spacing={1}>
-              {projects.map(project => {
+              {projects.map((project) => {
                 return (
                   <Grid item md={4} sm={6} xs={12}>
                     <ProjectCard project={project} />
@@ -76,7 +76,7 @@ const Index = props => {
               })}
             </Grid>
 
-            {/* Area of Specialisation */}
+            {/* Area of Specialization */}
 
             <Container
               elevation={0}
@@ -89,11 +89,11 @@ const Index = props => {
               <br />
 
               <Grid container justify="space-between">
-                <Specialisation
+                <Specialization
                   Subtitle={homepage.subtitle_1}
                   Paragraph={homepage.paragraph_1}
                   Img={"/assets/images/faay.jpg"}
-                  data={specialisation_data}
+                  data={Specialization_data}
                 />
               </Grid>
 
@@ -115,7 +115,7 @@ const Index = props => {
             <br />
             {/* App Links */}
             <Grid container justify="space-evenly">
-              {app_links.map(link => {
+              {app_links.map((link) => {
                 return (
                   <Grid item>
                     <LinkCard link={link} />

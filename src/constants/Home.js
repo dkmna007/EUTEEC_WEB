@@ -3,86 +3,86 @@ export const Constants = () => {
     title: "EGERTON UNIVERSITY TECHNOLOGY ENTHUSIASTS ENGINEER'S CLUB",
     title_2: "EUTEEC",
     title_3: "Club's Projects",
-    subtitle_1: "Our Areas of Specialisation",
+    subtitle_1: "Our Areas of Specialization",
     subtitle_2: "Main Activities",
     paragraph_1:
       "The club has highly competetive members ranging from the fresh minds of first years to experienced fourth and fifth years notforgetting the graduates and mentors.We focus on nurturing and providing the link from classwork to the real life.Providing platforms to entrepreneurs, companies and investors.We also look for trending issues and address them. Our skills include",
     paragraph_2:
-      "  Talk to any of our members to learn more.Join us to experience Control Engineering Life!!!."
+      "  Talk to any of our members to learn more.Join us to experience Control Engineering Life!!!.",
   };
-  const specialisation_data = [
+  const Specialization_data = [
     {
       Li: "Design of Control systems",
-      img: "/assets/images/graphics.jpg"
+      img: "/assets/images/graphics.jpg",
     },
     {
-      Li: "Sensor programing and integration"
+      Li: "Sensor programing and integration",
     },
     {
       Li: "Graphics and web design/development",
-      img: "/assets/images/graphics.jpg"
+      img: "/assets/images/graphics.jpg",
     },
     {
-      Li: "Circuit design,analysis,simulation and analysis"
+      Li: "Circuit design,analysis,simulation and analysis",
     },
     {
-      Li: "Mobile apps and web development"
+      Li: "Mobile apps and web development",
     },
     {
-      Li: "Computer/PC repairs and troubleshooting"
-    }
+      Li: "Computer/PC repairs and troubleshooting",
+    },
   ];
   const activities_data = [
     {
-      Li: "Teaching members about Technology and creating Awareness"
+      Li: "Teaching members about Technology and creating Awareness",
     },
     {
-      Li: "Participating in engineering conferences"
-    },
-    {
-      Li:
-        "We help in Design and Implementation of projects to Fifth Year students"
-    },
-    {
-      Li: "Programming of sensors,web and mobile platforms"
+      Li: "Participating in engineering conferences",
     },
     {
       Li:
-        " Participating in Charity activities as a way of Giving Back to the Society"
-    }
+        "We help in Design and Implementation of projects to Fifth Year students",
+    },
+    {
+      Li: "Programming of sensors,web and mobile platforms",
+    },
+    {
+      Li:
+        " Participating in Charity activities as a way of Giving Back to the Society",
+    },
   ];
 
   const appName = "EGERTON";
   const appLogo = {
-    Logo: "/assets/images/techlogo.png"
+    Logo: "/assets/images/techlogo.png",
   };
 
   const app_links = [
     {
       avatar: "/assets/images/techlogo.png",
       href: "www.euteec.cf",
-      name: " TECH ENTHUSIASTS"
+      name: " TECH ENTHUSIASTS",
     },
     {
       avatar: "/assets/images/egerton.jpg",
       href: "http://www.egerton.ac.ke",
-      name: " EGERTON UNIVERSITY"
+      name: " EGERTON UNIVERSITY",
     },
     {
       avatar: "/assets/images/app.png",
       href: "https://chat.whatsapp.com/9SPhBfMenh5FJHVnDwiu2S",
-      name: "ANDROID APP"
+      name: "ANDROID APP",
     },
     {
       avatar: "/assets/images/whatsapp.png",
       href: "https://chat.whatsapp.com/9SPhBfMenh5FJHVnDwiu2",
-      name: " CHAT NOW?"
+      name: " CHAT NOW?",
     },
     {
       avatar: "/assets/images/link3.jpeg",
       href: " https://www.lafiki.com",
-      name: "Thank You!"
-    }
+      name: "Thank You!",
+    },
   ];
 
   const projects = [
@@ -94,7 +94,7 @@ export const Constants = () => {
       title: "PLC",
       userId: "tiK7AZWxfcYvHC2yeAGYhncx01d2",
       userImgUrl:
-        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp"
+        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp",
     },
     {
       mediaUrl:
@@ -104,7 +104,7 @@ export const Constants = () => {
       title: "Aquaponics",
       userId: "tiK7AZWxfcYvHC2yeAGYhncx01d2",
       userImgUrl:
-        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp"
+        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp",
     },
     {
       mediaUrl:
@@ -115,7 +115,7 @@ export const Constants = () => {
         "Speed and alcohol detection and real time monitoring using GPS/GPRS",
       userId: "tiK7AZWxfcYvHC2yeAGYhncx01d2",
       userImgUrl:
-        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp"
+        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp",
     },
     {
       mediaUrl:
@@ -125,7 +125,7 @@ export const Constants = () => {
       title: "Carbon (II) oxide detection and Elimination",
       userId: "tiK7AZWxfcYvHC2yeAGYhncx01d2",
       userImgUrl:
-        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp"
+        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp",
     },
     {
       mediaUrl:
@@ -135,7 +135,7 @@ export const Constants = () => {
       title: "Arduino",
       userId: "tiK7AZWxfcYvHC2yeAGYhncx01d2",
       userImgUrl:
-        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp"
+        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp",
     },
     {
       mediaUrl:
@@ -145,7 +145,7 @@ export const Constants = () => {
       title: "Automated Green House Kit",
       userId: "tiK7AZWxfcYvHC2yeAGYhncx01d2",
       userImgUrl:
-        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp"
+        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp",
     },
     {
       mediaUrl:
@@ -155,7 +155,7 @@ export const Constants = () => {
       title: "Smart dustbin",
       userId: "tiK7AZWxfcYvHC2yeAGYhncx01d2",
       userImgUrl:
-        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp"
+        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp",
     },
     {
       mediaUrl:
@@ -165,7 +165,7 @@ export const Constants = () => {
       title: "Roboken",
       userId: "tiK7AZWxfcYvHC2yeAGYhncx01d2",
       userImgUrl:
-        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp"
+        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp",
     },
     {
       mediaUrl:
@@ -175,17 +175,17 @@ export const Constants = () => {
       title: "Raspberry Pi",
       userId: "tiK7AZWxfcYvHC2yeAGYhncx01d2",
       userImgUrl:
-        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp"
-    }
+        "https://lh3.googleusercontent.com/a-/AAuE7mC-vXoKv5wO8NwCxpdDoBB9Hq6lld7jkhfDaPVp",
+    },
   ];
 
   return {
-    specialisation_data,
+    Specialization_data,
     activities_data,
     homepage,
     appLogo,
     app_links,
     projects,
-    appName
+    appName,
   };
 };
