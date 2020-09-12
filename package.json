@@ -17,7 +17,7 @@
     "next": "^9.3.6",
     "next-redux-wrapper": "^6.0.0-rc.7",
     "next-seo": "^4.4.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "object-to-formdata": "^3.0.9",
     "prop-types": "15.7.2",
     "rc-progress": "^2.5.2",
