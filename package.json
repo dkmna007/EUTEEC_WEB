@@ -35,7 +35,7 @@
     "showdown": "^1.9.1",
     "styled-components": "^5.1.0",
     "switch-media-player": "^1.0.25",
-    "url-parse": "^1.4.7"
+    "url-parse": "^1.5.0"
   },
   "scripts": {
     "dev": "next",
